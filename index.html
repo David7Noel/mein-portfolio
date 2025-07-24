@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Artist Portfolio</title>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+</head>
+<body class="parallax">
+  <div class="parallax-container">
+  <!-- Weitere Seitenabschnitte wie HOME, WORK, CONTACT -->
+  <header class="parallax-layer parallax-layer--header" style="position: relative;">
+  <span id="mode-toggle" style="position: absolute; top: 1rem; right: 7rem; cursor: pointer; font-size: 0.9rem;">
+    Dark
+  </span>
+  <span id="lang-toggle" style="position: absolute; top: 1rem; right: 1rem; cursor: pointer; font-size: 0.9rem;">
+    EN/DE/PT/ES
+  </span>
+    <h1 id="title">CREATIVE ENGINEER</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#work">WORK</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+    <main>
+      <section class="parallax-group">
+    <div class="parallax-layer parallax-layer--back" style="background-image:url('bg.jpg')"></div>
+    <div class="parallax-layer parallax-layer--base">
+      <h2>Welcome</h2>
+    </div>
+  </section>
+  <section id="hercules" class="parallax-group">
+  <model-viewer 
+    src="assets/3D-Models/hercules.glb"
+    alt="3D model of Hercules"
+    auto-rotate
+    camera-controls
+    style="width: 100%; height: 100vh;">
+  </model-viewer>
+</section>
+
+    <section id="home"></section>
+  <section id="about"></section>
+  <section id="work" class="horizontal-gallery"></section>
+  <section id="contact"></section>
+    <section id="music" aria-labelledby="music-title">
+  <h2 id="music-title">Musik</h2>
+  <div class="audio-player-wrap">
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2053045152&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/david-noel-kruska" title="davidnoelferreira" target="_blank" style="color: #cccccc; text-decoration: none;">davidnoelferreira</a> · <a href="https://soundcloud.com/david-noel-kruska/sets/my-tracks" title="My tracks" target="_blank" style="color: #cccccc; text-decoration: none;">My tracks</a>
+    </div>
+    </section>
+    <section id="gallery" class="horizontal-gallery">
+  <figure class="gallery-item"><img src="assets/portraits/me_piano.jpg" alt="Portait 1" loading="lazy"></figure>
+  <figure class="gallery-item"><img src="assets/portraits/me_singingpose.jpg" alt="Portrait 2" loading="lazy"></figure>
+  <!-- weitere Bilder -->
+</section>
+
+
+<section class="parallax-group video-section">
+  <div class="parallax-layer--back">
+    <div class="youtube-embed" data-video-id="3CYt892nVZk">
+      <img
+        src="https://i.ytimg.com/vi/3CYt892nVZk/maxresdefault.jpg"
+        alt="Video Thumbnail"
+        loading="lazy"
+      />
+      <button class="play-button" aria-label="Play Video"></button>
+    </div>
+  </div>
+  <div class="parallax-layer--base content">
+    <!-- Optionaler Text über dem Video -->
+  </div>
+</section>
+
+
+  </main>
+  <footer class="parallax-group">
+    <div class="parallax-layer parallax-layer--back" style="background-image:url('footer-bg.jpg')"></div>
+    <div class="parallax-layer parallax-layer--base content">
+      <p>Contact:</p>
+      Designed and developed with 🤍 by David Noél Kruska
+    &copy; 2025. All rights reserved.
+  </footer>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

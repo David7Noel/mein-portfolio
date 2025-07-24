@@ -1,0 +1,272 @@
+/* ===== Root & Parallax Container ===== */
+html {
+  overflow: hidden; /* Kein Scroll am Root */
+}
+
+.parallax-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 4rem; /* 🛠 damit das Menü beim Snappen sichtbar bleibt */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+}
+
+/* ===== Basis-Styling ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  color: #333; /* wird durch Var überschrieben */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+
+header, nav, footer, section {
+  padding: 1rem;
+  text-align: center;
+  scroll-snap-align: start;
+  height: 100vh;
+  position: relative;
+  background-color: var(--surface-color);
+}
+
+/* ===== Toggle-Elemente ===== */
+#mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 7rem; /* nach links verschoben */
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+#lang-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+/* ===== Navigation / Hover & Active ===== */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0;
+  margin: 0;
+}
+nav a {
+  position: relative;
+  padding: 0.5rem 1rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+nav a:hover {
+  opacity: 1;
+  transform: scale(1.1); /* wächst beim Hover */
+  font-weight: bold;
+}
+nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* Trennerpunkte zwischen Links */
+nav a:not(:last-child)::after {
+  content: '•';
+  position: static;
+  margin: 0 1.5rem;
+  color: var(--accent-color);
+}
+
+
+/* ===== Theme Colors ===== */
+:root {
+  --bg-color: #fae1e8;
+  --surface-color: #e1c3bb;
+  --text-color: #87583b;
+  --heading-color: #a66c6c;
+  --accent-color: #efe1d9;
+}
+
+h1, h2 {
+  color: var(--heading-color);
+}
+
+/* Darkmode --> ändert nur Variablen */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --surface-color: #297f97;
+  --text-color: #e0e0e0;
+  --heading-color: #efe1d9;
+  --accent-color: #b9dddc;
+}
+
+/* ===== Audio Player ===== */
+.audio-player-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 166px;
+}
+.audio-player-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/* Horizontale Galerie */
+  .horizontal-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .horizontal-gallery::-webkit-scrollbar {
+    height: 6px;
+  }
+  .horizontal-gallery::-webkit-scrollbar-thumb {
+    background: rgba(17, 77, 105, 0.3);
+    border-radius: 3px;
+  }
+  .horizontal-gallery .gallery-item {
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+  }
+  .horizontal-gallery .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+
+/* ===== Parallax & Video Section ===== */
+@supports (perspective:1px) and (not(-webkit-overflow-scrolling:touch)) {
+  .parallax-group {
+    transform-style: preserve-3d;
+  }
+  .parallax-layer--back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+  }
+  .parallax-layer--base.content {
+    position: relative;
+    z-index: 0;
+    padding: 2rem;
+  }
+
+  /* Video-Parallax */
+  .video-parallax {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    scroll-snap-align: start;
+
+    .video-section {
+  position: relative;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.video-section .video-thumb {
+  position: absolute;
+  inset: 0;
+  display: block;
+  cursor: pointer;
+  z-index: -1; /* hinter den Parallax-Content legen */
+}
+
+.video-section .video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.video-section .video-thumb:hover img {
+  filter: brightness(1);
+}
+
+
+  }
+  .video-parallax .parallax-layer--back {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1; /* Wichtig: nicht -1, sonst verschwindet das Video */
+  }
+  .video-parallax .bg-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 120%; height: 120%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;   /* oben, aber unter Content */
+  }
+}
+.youtube-embed {
+  display: inline-block;
+  width: 50vw;
+  height: calc(50vw * 9 / 16);    /* 16:9 Seitenverhältnis */
+  max-width: 800px;               /* Obergrenze bei großen Bildschirmen */
+  max-height: calc(800px * 9 / 16);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.youtube-embed img,
+.youtube-embed iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+
+
