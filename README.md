@@ -1,7 +1,7 @@
 # Portfolio-Website
 
 ## Beschreibung
-Meine persönliche Portfolio-Seite mit interaktiven 3D-Elementen, Dark-/Lightmode und responsive Menüführung.
+Meine persönliche Portfolio-Seite mit interaktivem 3D-Element, Dark-/Lightmode und responsive Menüführung.
 
 ## Highlights
 - Nutzerfreundliches Design: Darkmode, responsive Navigation
