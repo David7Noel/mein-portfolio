@@ -1,2 +1,22 @@
-# mein-portfolio
-Developer Portfolio 
+# Portfolio-Website
+
+## Beschreibung
+Meine persönliche Portfolio-Seite mit interaktiven 3D-Elementen, Dark-/Lightmode und responsive Menüführung.
+
+## Highlights
+- Nutzerfreundliches Design: Darkmode, responsive Navigation
+- Interaktive 3D-Grafik
+- Ladeoptimierung durch CSS-Refactoring
+
+## Technologie-Stack
+HTML ● CSS ● JavaScript
+
+## Live-Demo
+[URL zur Live-Seite]
+
+## GitHub
+[Link zum Repository]
+
+## Status & Roadmap
+✅ Live & funktionsfähig  
+🚧 Weitere Features geplant: SEO-Optimierung, Performance-Tuning
