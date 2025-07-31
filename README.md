@@ -5,14 +5,13 @@ Meine persönliche Portfolio-Seite mit interaktivem 3D-Element, Dark-/Lightmode 
 
 ## Highlights
 - Nutzerfreundliches Design: Darkmode, responsive Navigation
-- Interaktive 3D-Grafik
 - Ladeoptimierung durch CSS-Refactoring
 
 ## Technologie-Stack
 HTML ● CSS ● JavaScript
 
 ## Live-Demo
-[URL zur Live-Seite]
+davidkruska.dev
 
 ## GitHub
 [Link zum Repository]
