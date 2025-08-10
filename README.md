@@ -1,22 +1,21 @@
 # Portfolio-Website
 
 ## Beschreibung
-Meine persönliche Portfolio-Seite mit interaktivem 3D-Element, Dark-/Lightmode und responsive Menüführung.
+Meine persönliche Portfolio-Seite mit Dark-/Lightmode und responsiver Menüführung.
 
 ## Highlights
 - Nutzerfreundliches Design: Darkmode, responsive Navigation
-- Interaktive 3D-Grafik
 - Ladeoptimierung durch CSS-Refactoring
 
 ## Technologie-Stack
 HTML ● CSS ● JavaScript
 
 ## Live-Demo
-[URL zur Live-Seite]
+https://davidkruska.dev/
 
 ## GitHub
-[Link zum Repository]
+https://github.com/David7Noel/mein-portfolio.git
 
 ## Status & Roadmap
-✅ Live & funktionsfähig  
+✅ Live & funktionsfähig  
 🚧 Weitere Features geplant: SEO-Optimierung, Performance-Tuning
