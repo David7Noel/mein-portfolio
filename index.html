@@ -1,64 +1,1149 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>Full‑Stack Developer in Training | React · FastAPI · RAG‑Chatbot | UX/UI & Figma</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David Noél Kruska</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import (Inter from Google Fonts) */
+        @import url('https://fonts.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        /* Custom color variables for neon blue accents and new harmonious blues */
+        :root {
+            /* Existing Dark Mode Neons - adjusted for less glow */
+            --neon-blue: #00F0FF; /* Bright cyan/electric blue */
+            --neon-blue-light: #66FFFF;
+            --neon-blue-dark: #00A3B5;
+            --neon-blue-glow-subtle: rgba(0, 240, 255, 0.2); /* Slightly softer glow */
+            --neon-blue-glow: rgba(0, 240, 255, 0.5); /* Slightly softer glow */
+            --neon-blue-glow-strong: rgba(0, 240, 255, 0.7); /* Slightly softer glow */
+
+            /* New harmonious blue/teal tones for dark mode */
+            --dark-blue-bg: #0D1117;
+            --deep-blue: #1A202C; /* Darker blue-grey, for button backgrounds */
+            --gradient-dark-from: #0A243F; /* Base of home gradient */
+            --gradient-dark-to: #005F6B;
+            --dark-menu-link-color: #9ca3af; /* Default grey for dark mode menu links */
+            --dark-menu-link-hover-color: var(--neon-blue-light); /* Hover color for dark mode menu links */
+            --dark-button-bg: var(--gradient-dark-from); /* Button background in dark mode, derived from home gradient */
+            --dark-button-hover-bg: var(--gradient-dark-to); /* Button hover background in dark mode, derived from home gradient */
+            --dark-footer-bg: #0C1014; /* Very dark blue-gray */
+            --dark-footer-text: #6B7280; /* Medium-dark grey for footer text */
+
+
+            /* --- UPDATED LIGHT MODE COLORS --- */
+            --light-bg: #d8d8f7; /* Reverted lavender for light mode background */
+            --light-text-general: #6F7A8A; /* Lighter blue-grey for main text */
+            --light-text-italic: #8A95A6; /* Slightly lighter for italic contrast */
+            --light-header-title-color: #4A5666; /* Slightly darker bluer-grey for section titles */
+
+            /* Light Mode Gradients for Home/Contact - minimal difference, but visible */
+            --light-home-gradient-from: #d0d0ed; /* Subtle gradient start for Home/Contact */
+            --light-home-gradient-to: #e0e0f5;   /* Subtle gradient end for Home/Contact */
+
+            /* Light Mode Gradients for other sections - now a darker nuance */
+            --light-section-bg: #C9C9E6; /* Darker nuance for About/Work boxes, harmonious */
+            --light-section-border: #e0e0f0; /* Subtle border for sections */
+
+            --light-nav-link-inactive: #8C96A5; /* Lighter, more harmonious inactive menu link color */
+            --light-nav-link-active-hover: #00FFFF; /* Bright neon cyan for hover */
+            --light-nav-link-active: #00A3B5; /* The original neon-blue-dark, for active state (DNK color) */
+
+            --light-button-bg: #00A3B5; /* Base button color in light mode, same as active link */
+            --light-button-hover-bg: #00FFFF; /* Button hover color in light mode, same as hover link */
+
+            --light-footer-bg: var(--light-section-bg); /* Footer background in light mode matches section background */
+            --light-footer-text: #9CA3AF; /* Light grey for footer text */
+        }
+
+        /* Apply Inter font to body and smooth transitions for theme change */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Slower, more elegant transition */
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            scroll-behavior: smooth; /* Native smooth scrolling for general user interaction */
+        }
+
+        /* Default Light Mode - reverted to previous lavender tone with darker text */
+        body:not(.dark) {
+            background-color: var(--light-bg);
+            color: var(--light-text-general);
+        }
+
+        /* Dark Mode styles */
+        body.dark {
+            background-color: var(--dark-blue-bg); /* Deep, sophisticated dark blue-gray (Omnisphere-like background) */
+            color: #e2e8f0; /* Soft white for readability */
+        }
+
+        /* Loading Overlay Styling */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-blue-bg); /* Match dark mode background */
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            z-index: 9999; /* Always on top */
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Subtle glow */
+        }
+
+        #loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #loading-overlay::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--neon-blue); /* Spinner color with neon accent */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Sticky Navigation Styling - Logo Left, Nav/Button Right */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.9); /* Slightly more opaque for dark mode */
+            backdrop-filter: blur(12px) saturate(180%); /* Enhanced blur and saturation */
+            -webkit-backdrop-filter: blur(12px) saturate(180%); /* For Safari */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+            transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border for definition */
+            padding-top: 0.5rem; /* Reduced top padding */
+            padding-bottom: 0.5rem; /* Reduced bottom padding */
+        }
+
+        /* Adjust sticky nav background for light mode */
+        body:not(.dark) .sticky-nav {
+            background: rgba(216, 216, 247, 0.95); /* Match new light mode body background, slightly more opaque */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Logo Styling for h1#title - now "DNK" as a more abstract logo */
+        #title {
+            font-family: 'Inter', sans-serif; /* Ensure Inter font for logo */
+            font-weight: 800; /* Extra bold for logo */
+            text-transform: uppercase; /* Make it uppercase for a logo feel */
+            letter-spacing: 0.08em; /* Slightly tighter letter spacing for compact look */
+            line-height: 1; /* Tighter line height */
+            white-space: nowrap; /* Keep it on one line */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for hover */
+            font-size: 1.2rem; /* Even smaller font for DNK as a logo */
+        }
+
+        body.dark #title {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue-glow-subtle), /* Reduced glow */
+                         0 0 15px var(--neon-blue-glow),         /* Reduced glow */
+                         0 0 25px var(--neon-blue-glow-strong); /* Reduced glow */
+        }
+        body.dark #title:hover {
+            color: var(--neon-blue-light);
+            text-shadow: 0 0 12px var(--neon-blue-glow), /* Reduced glow */
+                         0 0 20px var(--neon-blue-glow-strong), /* Reduced glow */
+                         0 0 30px rgba(0, 240, 255, 0.7); /* Reduced glow */
+            transform: scale(1.02); /* Subtle scale on hover */
+        }
+
+        body:not(.dark) #title {
+            color: var(--light-nav-link-active); /* Default color for DNK in light mode, now matches menu active */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        body:not(.dark) #title:hover {
+            color: var(--light-nav-link-active-hover); /* More neon hover for DNK */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Glow for new neon hover */
+            transform: scale(1.02);
+        }
+
+        /* Adjust header layout for mobile */
+        @media (max-width: 767px) {
+            .sticky-nav > div { /* Target the inner div containing logo, nav, button */
+                flex-direction: column; /* Stack vertically */
+                align-items: center; /* Center items horizontally */
+                text-align: center;
+                gap: 1rem; /* Space between stacked elements */
+            }
+            #title {
+                font-size: 1.1rem; /* Even smaller font for mobile DNK logo */
+                letter-spacing: 0.05em;
+                margin-bottom: 0.5rem; /* Reduced margin */
+            }
+            .sticky-nav nav ul {
+                gap-x: 1.5rem; /* Reduce gap between nav links on mobile */
+            }
+        }
+
+
+        /* Nav Link Base Styling for compact menu */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.8rem; /* Even smaller height for links */
+            padding-left: 0.6rem; /* px-2.5 */
+            padding-right: 0.6rem; /* px-2.5 */
+            border-radius: 0.3rem; /* rounded-sm */
+            font-size: 0.9rem; /* Smaller font size for menu links */
+            font-weight: 600; /* Semi-bold */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* Dark Mode Nav Link Colors */
+        body.dark .nav-link {
+            color: var(--dark-menu-link-color);
+        }
+        body.dark .nav-link:hover {
+            color: var(--dark-menu-link-hover-color);
+            transform: translateY(-1px); /* Slight lift */
+            text-shadow: 0 0 8px var(--neon-blue-glow-subtle); /* Softer glow on hover */
+        }
+
+        /* Light Mode Nav Link Colors (adjusted for contrast) */
+        body:not(.dark) .nav-link {
+            color: var(--light-nav-link-inactive);
+        }
+        body:not(.dark) .nav-link:hover {
+            color: var(--light-nav-link-active-hover);
+            transform: translateY(-1px);
+            text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Active Navigation Link Styling - Neon Glow Underline */
+        .sticky-nav .nav-link.active {
+            position: relative;
+            font-weight: 700;
+        }
+
+        /* Dark Mode Active Nav Link Color */
+        body.dark .sticky-nav .nav-link.active {
+            color: var(--neon-blue); /* Bright neon blue for active state in dark theme */
+            text-shadow: 0 0 10px var(--neon-blue-glow); /* Reduced glow */
+        }
+
+        /* Light Mode Active Nav Link Color */
+        body:not(.dark) .sticky-nav .nav-link.active {
+            color: var(--light-nav-link-active);
+            text-shadow: 0 0 10px rgba(0, 163, 181, 0.5); /* Glow for active link */
+        }
+
+        /* Underline for active navigation link - thin, glowing neon */
+        .sticky-nav .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.15rem; /* Adjusted to sit correctly under smaller text */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%; /* Shorter line */
+            height: 2px;
+            border-radius: 1px;
+            transition: all 0.4s ease-in-out;
+            animation: pulseUnderline 1.5s infinite alternate ease-in-out;
+        }
+
+        /* Dark Mode Underline */
+        body.dark .sticky-nav .nav-link.active::after {
+            background: var(--neon-blue);
+            box-shadow: 0 0 7px var(--neon-blue-glow), 0 0 12px var(--neon-blue-glow-strong); /* Reduced glow */
+        }
+
+        /* Light Mode Underline - NEW */
+        body:not(.dark) .sticky-nav .nav-link.active::after {
+            background: var(--light-nav-link-active);
+            box-shadow: 0 0 7px rgba(0, 163, 181, 0.5), 0 0 12px rgba(0, 163, 181, 0.7);
+        }
+
+        /* Keyframes for subtle pulsing effect on active underline */
+        @keyframes pulseUnderline {
+            0% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+            100% { transform: translateX(-50%) scaleX(1.1); opacity: 0.8; }
+        }
+
+        /* Theme Toggle Button specific styles for a more polished look */
+        #mode-toggle {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 0.3rem 0.6rem; /* Restored slightly larger padding */
+            font-size: 0.7rem; /* Restored slightly larger font size */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out; /* Ensure smooth transition */
+        }
+        body.dark #mode-toggle {
+            background: var(--dark-button-bg); /* Use dark button bg */
+            color: #e2e8f0; /* Ensure text is visible */
+        }
+        body.dark #mode-toggle:hover {
+            background: var(--dark-button-hover-bg); /* Use dark button hover bg */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px var(--neon-blue-glow); /* Reduced glow, consistent with other hovers */
+            border-color: var(--neon-blue-light);
+        }
+
+        /* Light Mode Button Style (when light mode is active) */
+        body:not(.dark) #mode-toggle {
+            background: var(--light-button-bg); /* Use variable for light mode button background */
+            color: #e2e8f0; /* Ensure text is visible on color */
+            border-color: var(--light-button-bg);
+        }
+        body:not(.dark) #mode-toggle:hover {
+            background: var(--light-button-hover-bg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 255, 255, 0.4);
+            border-color: var(--light-button-hover-bg);
+        }
+
+
+        /* Section anchor offset for smooth scrolling */
+        section[id] {
+            scroll-margin-top: 100px; /* Adjusted to account for smaller sticky header */
+            padding: 4rem; /* More generous padding for sections */
+            border-radius: 1.5rem; /* Larger border-radius for softer look */
+            transition: all 0.4s ease-in-out; /* Smooth transition for section background/shadow changes */
+            transform: perspective(1000px) rotateY(0deg) scale(1); /* Initial state for hover effect */
+            min-height: 70vh; /* Reduced min-height for sections, especially home */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Specifically target home section for further height reduction and bottom padding */
+        #home {
+            min-height: 60vh; /* Make home section even smaller */
+            padding-top: 6rem; /* Adjusted padding top */
+            padding-bottom: 18rem; /* Increased padding bottom significantly for scroll prompt */
+        }
+        @media (max-width: 767px) {
+            #home {
+                min-height: 70vh; /* Adjust for mobile if needed */
+                padding-top: 4rem;
+                padding-bottom: 12rem; /* Adjusted for mobile */
+            }
+        }
+
+
+        /* Adjust section background for light mode */
+        body:not(.dark) section[id]:not(#home):not(#contact) {
+            background-color: var(--light-section-bg); /* Darker nuance for About/Work boxes, harmonious */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Lighter shadow for light mode */
+            border: 1px solid var(--light-section-border); /* Subtle border for definition */
+        }
+
+        /* Ensure section headings and paragraphs also pick up the dark color in light mode */
+        body:not(.dark) section h2 {
+            color: var(--light-header-title-color); /* Headings use new header title color */
+            text-shadow: none; /* Ensure no shadows in light mode headings */
+        }
+        body:not(.dark) section p {
+            color: var(--light-text-general);
+        }
+        body:not(.dark) section p.italic {
+            color: var(--light-text-italic);
+        }
+
+
+        /* Section Hover Effect - subtle 3D tilt */
+        section[id]:hover {
+            transform: perspective(1000px) rotateY(1deg) scale(1.005); /* Slight tilt for interaction */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* More pronounced shadow on hover */
+        }
+        body:not(.dark) section[id]:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Slightly lighter hover shadow for light mode */
+        }
+
+        /* Image styling for a more artistic touch */
+        img {
+            border-radius: 1rem; /* More rounded images */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow for images */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.02); /* Slight scale on image hover */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Specific styling for the profile picture to make it stand out - Neon Glow */
+        .profile-picture-container img {
+            border: 8px solid; /* Thicker border */
+            border-image: linear-gradient(45deg, var(--neon-blue), #00BFFF, #00A3B5) 1; /* Elegant gradient border with neon blue start, more blue/cyan */
+            box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.15), 0 0 18px var(--neon-blue-glow), 0 0 28px rgba(0, 240, 255, 0.1); /* Reduced glow */
+            animation: floatEffect 5s ease-in-out infinite alternate; /* Subtle floating animation */
+        }
+        body:not(.dark) .profile-picture-container img {
+            border-image: linear-gradient(45deg, var(--light-nav-link-active), var(--light-nav-link-active-hover)) 1;
+            box-shadow: 0 0 0 8px rgba(0, 163, 181, 0.15), 0 0 18px rgba(0, 163, 181, 0.5), 0 0 28px rgba(0, 163, 181, 0.1);
+        }
+
+        .profile-picture-container img:hover {
+            transform: scale(1.06); /* More pronounced scale on hover */
+            box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.2), 0 0 25px var(--neon-blue-glow), 0 0 35px rgba(0, 240, 255, 0.15); /* Reduced glow */
+        }
+        body:not(.dark) .profile-picture-container img:hover {
+             box-shadow: 0 0 0 8px rgba(0, 255, 255, 0.2), 0 0 25px rgba(0, 255, 255, 0.6), 0 0 35px rgba(0, 255, 255, 0.15);
+        }
+
+
+        /* Profile picture inner circle overlay - UPDATED to be completely transparent */
+        .profile-picture-container div.absolute.inset-0 { /* Target the div specifically */
+            background: none; /* No background color */
+            opacity: 0; /* Completely transparent */
+            transition: opacity 0.3s ease-in-out; /* Keep transition for consistency */
+        }
+        /* Ensure it remains transparent on hover */
+        .profile-picture-container:hover div.absolute.inset-0 {
+            opacity: 0;
+        }
+
+        /* GitHub Button Hover styles - Dark Mode (for the button in Work section) */
+        body.dark a[href*="github.com"].inline-flex {
+            background: var(--dark-button-bg); /* Use dark button bg */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out; /* Ensure smooth transition */
+        }
+        body.dark a[href*="github.com"].inline-flex:hover {
+            background: var(--dark-button-hover-bg); /* Use dark button hover bg */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px var(--neon-blue-glow);
+            border-color: var(--neon-blue-light);
+            transform: scale(1.05);
+        }
+
+
+        /* GitHub Link in Work section (Light Mode - for the button) */
+        body:not(.dark) a[href*="github.com"].inline-flex {
+            background: var(--light-button-bg);
+            color: #e2e8f0; /* Ensure text is visible */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--light-button-bg);
+        }
+        body:not(.dark) a[href*="github.com"].inline-flex:hover {
+            background: var(--light-button-hover-bg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 255, 255, 0.4);
+            border-color: var(--light-button-hover-bg);
+        }
+
+        /* Footer Styling */
+        footer {
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+        body.dark footer {
+            background-color: var(--dark-footer-bg);
+            color: var(--dark-footer-text);
+            border-top-color: var(--dark-blue-bg); /* Border matches dark background */
+        }
+        body:not(.dark) footer {
+            background-color: var(--light-footer-bg); /* Use the slightly darker footer color */
+            color: var(--light-footer-text);
+            border-top-color: var(--light-section-border); /* Matches light section border */
+        }
+
+
+        /* Keyframes for subtle floating effect */
+        @keyframes floatEffect {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(-0.5deg); }
+        }
+
+        /* Subtle icon styling */
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Styles for scroll-in animation - even slower and with scale */
+        .scroll-in-animation {
+            opacity: 0;
+            transform: translateY(250px) scale(0.97); /* Start lower and slightly smaller */
+            transition: opacity 1.8s ease-out, transform 1.8s ease-out; /* Even longer, smoother transition */
+            will-change: opacity, transform; /* Optimize for animation */
+        }
+
+        .scroll-in-animation.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1); /* Move to final position and full scale */
+        }
+
+        /* h2 base styling back to normal */
+        section h2 {
+            /* No special span wrapping, no animation-delay per char */
+            transition: color 0.3s, text-shadow 0.3s; /* Only color/shadow for general transitions */
+        }
+
+        /* Original animation for Home section paragraphs */
+        #home p {
+            animation: fadeInUp 1.2s ease-out 0.3s forwards; /* Keep existing fade-in for paragraph */
+        }
+        @keyframes fadeInUp { /* Re-define keyframes if they were only for h2 */
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* Scroll Prompt Styling */
+        #scroll-prompt {
+            position: absolute;
+            bottom: 3%; /* Still 3% relative to its parent, but parent now has more padding-bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            opacity: 1; /* Always visible */
+            transition: opacity 0.5s ease-out, color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+            animation: bounceUpDown 2s infinite ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none; /* Make it transparent */
+            border: none; /* Remove border */
+            cursor: pointer; /* Indicate it's clickable */
+            padding: 0; /* Remove default padding */
+            pointer-events: auto; /* Ensure it's always clickable */
+        }
+
+        /* Dark mode scroll prompt color */
+        body.dark #scroll-prompt {
+            color: #e2e8f0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        /* Light mode scroll prompt color */
+        body:not(.dark) #scroll-prompt {
+            color: var(--light-text-general); /* Use general text color for light mode */
+            text-shadow: 0 0 5px rgba(50, 50, 50, 0.2);
+        }
+
+        #scroll-prompt svg {
+            margin-top: 10px;
+            animation: fadeInOutArrow 2s infinite ease-in-out;
+            /* SVG color will inherit from parent #scroll-prompt */
+        }
+
+        /* Removed hidden class for scroll-prompt */
+
+        @keyframes bounceUpDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        @keyframes fadeInOutArrow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Hide default scrollbar for a cleaner look, optional */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;   /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Styling for copy message */
+        .copy-message {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-size: 0.75rem; /* Smaller font for copy message */
+            vertical-align: middle;
+            margin-left: 0.5rem;
+            color: #00F0FF; /* Neon blue for feedback */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        body:not(.dark) .copy-message {
+            color: var(--light-nav-link-active); /* Light mode active link color */
+        }
+
+        /* Contact Icon base styling */
+        .contact-icon {
+            width: 1.5em; /* Retained slightly larger default size for icons */
+            height: 1.5em;
+            vertical-align: middle;
+            fill: currentColor; /* Inherit color from parent */
+            transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add filter transition */
+        }
+
+        /* --- Dark Mode Email Icon Specific Styles (No aggressive hover) --- */
+        body.dark .contact-icon.email-icon .envelope-outer-border {
+            fill: none; /* Make outer boundary transparent */
+            stroke: currentColor; /* Only show the stroke/border */
+            stroke-width: 1.5; /* Adjust stroke thickness */
+        }
+        body.dark .contact-icon.email-icon .envelope-flap {
+            fill: currentColor; /* Flap should be filled */
+        }
+        body.dark .contact-icon.email-icon .envelope-body {
+            fill: none; /* Make body transparent */
+            stroke: currentColor; /* Only show the stroke/border */
+            stroke-width: 1.5; /* Adjust stroke thickness */
+        }
+        /* Dark mode: ensure default contact link hover applies without extra glow */
+        body.dark #contact ul li a {
+            color: #a3c1e0; /* Default color for text links in dark mode */
+        }
+        body.dark #contact ul li a:hover {
+            color: var(--dark-menu-link-hover-color); /* Matches dark mode menu hover */
+            text-shadow: none; /* No extra glow for these elements on hover */
+        }
+        body.dark .copy-text-action {
+            color: #a3c1e0; /* Default text color for copy action in dark mode */
+        }
+        body.dark .copy-text-action:hover {
+            color: var(--dark-menu-link-hover-color); /* Hover color */
+            text-shadow: none; /* No extra glow */
+            transform: translateY(-1px);
+        }
+        /* Ensure social icons in dark mode get hover effect from their parents */
+        body.dark .contact-icon-link .contact-icon {
+            color: currentColor; /* Inherit color from parent link */
+        }
+        body.dark .contact-icon-link:hover .contact-icon {
+            color: var(--dark-menu-link-hover-color); /* Inherit hover color from parent link */
+        }
+
+        /* --- Light Mode Email Icon Specific Styles (Transparent body, DNK color, softer neon hover) --- */
+        body:not(.dark) .contact-icon.email-icon {
+            color: var(--light-nav-link-active); /* DNK color */
+        }
+        body:not(.dark) .contact-icon.email-icon .envelope-outer-border {
+            fill: none; /* Make outer boundary transparent */
+            stroke: currentColor; /* Outline will have current color */
+            stroke-width: 1.5;
+        }
+        body:not(.dark) .contact-icon.email-icon .envelope-flap {
+            fill: currentColor; /* Flap will have current color */
+        }
+        body:not(.dark) .contact-icon.email-icon .envelope-body {
+            fill: none; /* Body transparent */
+            stroke: currentColor; /* Outline will have current color */
+            stroke-width: 1.5;
+        }
+
+        /* --- Light Mode LinkedIn/GitHub Icon Styles (DNK color, softer neon hover) --- */
+        body:not(.dark) .contact-icon-link:not(#email-address-link) .contact-icon {
+            color: var(--light-nav-link-active); /* DNK color */
+        }
+        /* GitHub specific filter for "heller werden" in light mode */
+        body:not(.dark) .contact-icon-link[href*="github.com"] .contact-icon {
+            filter: brightness(1.1); /* Make GitHub icon slightly brighter in light mode */
+        }
+
+        /* --- Light Mode Text Colors (Email address & Copy to Clipboard - inactive menu link color, softer neon hover) --- */
+        body:not(.dark) #email-address-link, /* Email address text */
+        body:not(.dark) .copy-text-action span /* Copy to clipboard text */
+        {
+            color: var(--light-nav-link-inactive); /* Initial color for email text & copy text */
+        }
+        /* Ensure the copy to clipboard SVG gets DNK color */
+        body:not(.dark) .copy-text-action svg {
+            color: var(--light-nav-link-active);
+        }
+
+        /* Unified Light Mode Hover for all contact elements (icons and text) */
+        body:not(.dark) #email-address-link:hover,
+        body:not(.dark) #email-address-link:hover .contact-icon, /* Email icon on hover */
+        body:not(.dark) .copy-text-action:hover, /* Copy text on hover */
+        body:not(.dark) .copy-text-action:hover svg, /* Copy icon on hover */
+        body:not(.dark) .contact-icon-link:not(#email-address-link):hover, /* Social link text on hover */
+        body:not(.dark) .contact-icon-link:not(#email-address-link):hover .contact-icon /* Social icons on hover */
+        {
+            color: var(--light-nav-link-active-hover); /* Cyan-neon on hover */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 255, 255, 0.15); /* Softer neon glow */
+        }
+
+        /* Specific styles for email link text */
+        #email-address-link span {
+            font-size: 1.15rem; /* Retained slightly larger font for email link text */
+        }
+
+        /* Custom styling for the copy-to-clipboard span (not a button) */
+        .copy-text-action {
+            display: inline-flex; /* Use inline-flex to keep text and icon together */
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem; /* Slightly larger text for visibility, but smaller than email */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: -0.5rem; /* Adjusted to bring it even closer to email address */
+        }
+        /* Dark Mode copy text action (reverted to default dark mode styles) */
+        body.dark .copy-text-action {
+            color: #a3c1e0; /* Default text color */
+        }
+        body.dark .copy-text-action:hover {
+            color: var(--dark-menu-link-hover-color); /* Hover color */
+            text-shadow: none; /* No extra glow */
+            transform: translateY(-1px);
+        }
+
+        .copy-text-action svg {
+            width: 1em; /* Icon size relative to font size */
+            height: 1em;
+            margin-right: 0.4rem;
+            fill: currentColor;
+        }
+
+        /* Contact list item layout - Vertical stack, centered */
+        #contact ul {
+            display: flex;
+            flex-direction: column; /* Stack primary contact methods vertically */
+            align-items: center;
+            gap: 1.5rem; /* Increased gap between all primary items for equal spacing */
+        }
+
+        /* Specific styling for the li that contains LinkedIn and GitHub */
+        #contact ul li.social-links {
+            flex-direction: row; /* Make LinkedIn and GitHub appear side-by-side */
+            gap: 2.5rem; /* Gap between LinkedIn and GitHub */
+            margin-top: 0.5rem; /* Slightly more space from copy to clipboard block */
+        }
+    </style>
 </head>
-<body>
-<header>
-  <div class="header-content">
-    <h1 id="title">Full‑Stack Developer in Training | React · FastAPI · RAG‑Chatbot | UX/UI & Prototyping with Figma</h1>
-  </div>
-  <nav class="sticky-nav">
-    <ul>
-      <li><a href="#home" class="nav-link">HOME</a></li>
-      <li><a href="#about" class="nav-link">ABOUT</a></li>
-      <li><a href="#work" class="nav-link">WORK</a></li>
-      <li><a href="#contact" class="nav-link">CONTACT</a></li>
-    </ul>
-    <button id="mode-toggle" aria-label="Toggle theme">☀️ Light Mode</button>
-  </nav>
-</header>
+<body class="dark"> <!-- Default to dark mode for a sleek initial look -->
 
-<main>
-  <section id="home">
-    <h2>Welcome</h2>
-  </section>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <span class="text-white text-4xl font-extrabold tracking-wider">Building the Digital Symphony...</span>
+    </div>
 
-  <section id="about" class="content">
-    <h2>Hey there! I’m David</h2>
-    <p>
-      I’m a Full‑Stack Developer in training, currently building an interactive RAG chatbot using React (frontend), FastAPI (backend) and OpenAI, embedded directly into my portfolio.
-    </p>
-    <p>
-      This chatbot will process PDF and text documents, perform semantic retrieval from a vector store, and generate answers to user questions using OpenAI. I’m interested in UI/UX design and prototyping with Figma as well.
-    </p>
-  </section>
+    <!-- Header Section -->
+    <header class="sticky-nav py-3"> <!-- Reduced vertical padding -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center"> <!-- Adjusted px for more outside spacing -->
+            <h1 id="title" class="text-white font-extrabold text-left md:text-left leading-snug tracking-wider cursor-default transition-colors duration-300">
+                DNK
+            </h1>
+            <!-- Navigation Menu -->
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3 font-medium">
+                    <li><a href="#home" class="nav-link">HOME</a></li>
+                    <li><a href="#about" class="nav-link">ABOUT</a></li>
+                    <li><a href="#work" class="nav-link">WORK</a></li>
+                    <li><a href="#contact" class="nav-link">CONTACT</a></li>
+                </ul>
+            </nav>
+            <!-- Theme Toggle Button -->
+            <button id="mode-toggle" aria-label="Toggle theme" class="mt-4 md:mt-0 md:ml-5 px-3 py-1.5 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs whitespace-nowrap"> <!-- Restored slightly larger px, py, text-size -->
+                ☀️ Light Mode
+            </button>
+        </div>
+    </header>
 
-  <section id="work" class="horizontal-gallery">
-    <p>Under construction! Please check back later for my projects.</p>
-  </section>
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32"> <!-- Increased vertical padding and space between sections -->
+        <!-- Home Section -->
+        <section id="home" class="relative p-12 py-24 rounded-2xl shadow-3xl text-white text-center transform hover:scale-[1.005] transition-transform duration-300 border border-blue-400 border-opacity-20 scroll-in-animation">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br"></div> <!-- Gradient handled by JS for theme -->
+            <div class="relative z-10">
+                <h2 class="text-6xl font-extrabold mb-8 drop-shadow-xl">Welcome to my Digital Symphony.</h2>
+                <p class="text-2xl max-w-4xl mx-auto leading-relaxed opacity-95 animate-fade-in-up">
+                    As a Full‑Stack Developer, I compose elegant code and design intuitive experiences. As a Musician, I bring rhythm, harmony, and a unique perspective to every innovative project. Let's create something extraordinary.
+                </p>
+                <!-- Scroll Prompt -->
+                <button id="scroll-prompt" class="mt-10 relative z-10">
+                    Scroll to discover more
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </button>
+            </div>
+        </section>
 
-  <section id="contact">
-    <p>Feel free to reach out to me:</p>
-    <ul>
-      <li>Email: <a href="mailto:davidnoel.kruska@outlook.de">davidnoel.kruska@outlook.de</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/david-noel-kruska/">dein‑profil</a></li>
-    </ul>
-  </section>
+        <!-- About Section -->
+        <section id="about" class="bg-white dark:bg-gray-900 p-12 rounded-2xl shadow-xl text-gray-900 dark:text-gray-100 flex flex-col lg:flex-row items-center gap-12 border border-gray-200 dark:border-gray-700 scroll-in-animation">
+            <!-- Profile Picture with "David" resemblance and water effect -->
+            <div class="flex-shrink-0 relative group profile-picture-container">
+                <img src="lebenslauf.jpg" alt="David Noel Kruska Profile Picture resembling classical art" class="w-64 h-64 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/250x250/2563eb/ffffff?text=David+Statue';">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+            </div>
+            <!-- About Content -->
+            <div class="flex-grow text-center lg:text-left">
+                <h2 class="text-5xl font-bold mb-8 text-gray-800 dark:text-white">A Blend of Logic and Lyrical Flow</h2>
+                <p class="mb-6 leading-relaxed text-xl">
+                    I’m **David Noél Kruska**, a Full‑Stack Developer in training, passionate about crafting immersive digital solutions. My profound interest lies in **UI/UX design** and rapid **prototyping with Figma**, continually striving to create intuitive, elegant, and engaging user experiences that truly stand out. My work often involves leveraging modern frameworks and innovative approaches to bring ideas to life.
+                </p>
+                <p class="leading-relaxed text-xl mt-8 italic text-gray-600 dark:text-gray-300">
+                    <span class="icon">&#127925;</span> As a passionate **musician and music producer**, I approach development like composing a piece – seeking harmony in code, rhythm in functionality, and a captivating melody in design.
+                    My deep connection to the **element of water** <span class="icon">&#128033;</span> inspires solutions that are fluid, adaptable, and refreshing, always flowing towards innovative horizons.
+                    <br><br>
+                    Born from **Portuguese roots** <span class="icon">&#127477;&#127481;</span> and fueled by a **sporty drive** <span class="icon">&#128170;</span>, I find immense inspiration in Portugal's vibrant nature, its breathtaking beaches, and the expansive sea – from the historic charm of Lisbon to the deeply personal beauty of **Setúbal, my mother's hometown where I've spent cherished vacations since childhood**. This cultural richness and dynamic energy translate into a pursuit of excellence and a unique perspective in all my technical and creative endeavors.
+                </p>
+            </div>
+        </section>
 
-  <section id="gallery" class="horizontal-gallery">
-    <figure class="gallery-item"><img src="assets/portraits/me_piano.jpg" alt="Portrait 1" loading="lazy"></figure>
-    <figure class="gallery-item"><img src="assets/portraits/me_singingpose.jpg" alt="Portrait 2" loading="lazy"></figure>
-  </section>
-</main>
+        <!-- Work Section (Placeholder for future projects) -->
+        <section id="work" class="bg-white dark:bg-gray-900 p-12 rounded-2xl shadow-xl text-gray-900 dark:text-gray-100 text-center border border-gray-200 dark:border-700 scroll-in-animation">
+            <h2 class="text-5xl font-bold mb-8 text-gray-800 dark:text-white">My Creative Compositions & Projects</h2>
+            <p class="text-xl leading-relaxed opacity-90">
+                This section is currently being orchestrated! Here, you'll find a detailed showcase of my innovative projects and interactive demos. This includes my advanced RAG chatbot, where I'll delve into the **technical architecture, design decisions, and the unique challenges and solutions** involved in integrating **React**, **FastAPI**, and powerful **LLMs** for intelligent conversational capabilities. Stay tuned for a truly unique presentation of my work, featuring my passion for **audio-visual experiences** that blur the lines between technology and art.
+            </p>
+            <div class="mt-10 mb-8">
+                <img src="https://placehold.co/500x250/374151/e5e7eb?text=The+Next+Symphony+is+Loading..." alt="Work in progress placeholder" class="mx-auto rounded-xl shadow-lg opacity-80">
+            </div>
+            <!-- GitHub Link - MOVED HERE -->
+            <div class="mt-10 mb-8">
+                <a href="https://github.com/David7Noel" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-10 py-4 text-white font-semibold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 text-xl tracking-wider">
+                    <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.419 2.865 8.163 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.455-1.159-1.11-1.465-1.11-1.465-.908-.618.069-.607.069-.607 1.004.07 1.532 1.03 1.532 1.03.892 1.529 2.341 1.087 2.903.83.091-.644.35-1.087.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.09.389-1.984 1.028-2.68-.103-.253-.446-1.272.098-2.65 0 0 .838-.268 2.746 1.029A9.972 9.972 0 0110 4.868c.85.006 1.704.113 2.504.331 1.907-1.297 2.745-1.029 2.745-1.029.544 1.378.203 2.397.098 2.65.64.696 1.028 1.59 1.028 2.68 0 3.841-2.339 4.686-4.566 4.935.359.308.678.915.678 1.846 0 1.338-.012 2.419-.012 2.747 0 .267.18.577.688.481C17.135 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                    </svg>
+                    Explore my GitHub Profile
+                </a>
+            </div>
+        </section>
 
-<footer>
-  <p>Designed and developed with 🤍 by David Noél Kruska &copy; 2025. All rights reserved.</p>
-</footer>
+        <!-- Contact Section -->
+        <section id="contact" class="relative p-12 rounded-2xl shadow-3xl text-white text-center border border-blue-400 border-opacity-20 scroll-in-animation">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br"></div> <!-- Gradient handled by JS for theme -->
+            <div class="relative z-10">
+                <h2 class="text-5xl font-bold mb-8 drop-shadow-xl">Let's Harmonize!</h2>
+                <p class="text-xl mb-10 opacity-95">I'm always open to discussing new opportunities, creative collaborations, or simply sharing innovative ideas. Feel free to connect:</p>
+                <ul class="flex flex-col items-center gap-y-4 text-2xl font-medium">
+                    <!-- Email and Copy to Clipboard Group -->
+                    <li class="flex flex-col items-center">
+                        <a href="mailto:davidnoel.kruska@outlook.de" id="email-address-link" class="contact-icon-link transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                            <!-- Email Icon with specific paths for styling -->
+                            <svg class="contact-icon email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <!-- Outer boundary of the envelope -->
+                                <path class="envelope-outer-border" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6z" />
+                                <!-- Top flap of the envelope -->
+                                <path class="envelope-flap" d="M20 6L12 11 4 6h16z" />
+                                <!-- Main body of the envelope -->
+                                <path class="envelope-body" d="M20 18V8l-8 5-8-5v10H20z" />
+                            </svg>
+                            <span class="ml-2">davidnoel.kruska@outlook.de</span>
+                        </a>
+                        <!-- Copy to Clipboard Text and Icon (now a span, not a button visually) -->
+                        <span id="copy-email-action" class="copy-text-action">
+                            <!-- Copy to Clipboard Icon (two overlapping squares from screenshot) -->
+                            <svg class="w-4 h-4 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"/>
+                            </svg>
+                            <span>copy to clipboard</span>
+                        </span>
+                        <span id="copy-message" class="copy-message"></span>
+                    </li>
+                    <!-- LinkedIn and GitHub Links side-by-side -->
+                    <li class="flex items-center justify-center social-links">
+                        <a href="https://www.linkedin.com/in/david-noel-kruska/" target="_blank" rel="noopener noreferrer" class="contact-icon-link transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                            <!-- LinkedIn Icon -->
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.564c0-1.353-.024-3.09-1.88-3.09-1.882 0-2.174 1.47-2.174 3.007v5.647H9.288V9.18h3.416v1.561h.049c.475-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.006zM5.962 7.625c-1.229 0-2.227-1.002-2.227-2.235s.998-2.235 2.227-2.235c1.233 0 2.227 1.002 2.227 2.235s-.994 2.235-2.227 2.235zm1.776 12.827H4.186V9.18h3.552v11.272zM22.225 0H1.774C.794 0 0 .776 0 1.731v20.538C0 23.224.794 24 1.774 24h20.452c.98 0 1.774-.776 1.774-1.731V1.731C24 .776 23.206 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/David7Noel" target="_blank" rel="noopener noreferrer" class="contact-icon-link transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                            <!-- GitHub Icon -->
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.419 2.865 8.163 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.455-1.159-1.11-1.465-1.11-1.465-.908-.618.069-.607.069-.607 1.004.07 1.532 1.03 1.532 1.03.892 1.529 2.341 1.087 2.903.83.091-.644.35-1.087.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.09.389-1.984 1.028-2.68-.103-.253-.446-1.272.098-2.65 0 0 .838-.268 2.746 1.029A9.972 9.972 0 0110 4.868c.85.006 1.704.113 2.504.331 1.907-1.297 2.745-1.029 2.745-1.029.544 1.378.203 2.397.098 2.65.64.696 1.028 1.59 1.028 2.68 0 3.841-2.339 4.686-4.566 4.935.359.308.678.915.678 1.846 0 1.338-.012 2.419-.012 2.747 0 .267.18.577.688.481C17.135 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-<script src="script.js" defer></script>
+    <!-- Footer Section -->
+    <footer class="bg-gray-950 py-10 text-center text-gray-600 text-sm border-t border-gray-800">
+        <p>Crafted with <span class="text-white">&#x2764;&#xfe0f;</span> and a passion for unique creations by David Noél Kruska &copy; 2025. All rights reserved.</p>
+        <p class="mt-3">A symphony of code, design, and personal expression.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const modeToggle = document.getElementById('mode-toggle');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPrompt = document.getElementById('scroll-prompt');
+            const homeSection = document.getElementById('home');
+            const emailAddressLink = document.getElementById('email-address-link');
+            const copyEmailAction = document.getElementById('copy-email-action');
+            const copyMessage = document.getElementById('copy-message');
+
+            // --- Theme Handling ---
+            // Hide loading overlay after 1.5 seconds
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                // Ensure body content is visible after loading overlay hides
+                document.body.style.visibility = 'visible';
+            }, 1500);
+
+            // Set initial theme based on local storage or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.classList.add('dark');
+                modeToggle.innerHTML = '☀️ Light Mode';
+            } else {
+                document.body.classList.remove('dark');
+                modeToggle.innerHTML = '🌙 Dark Mode';
+            }
+
+            // Theme toggle functionality
+            modeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+                if (document.body.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                    modeToggle.innerHTML = '☀️ Light Mode';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    modeToggle.innerHTML = '🌙 Dark Mode';
+                }
+                // Update gradients on theme change
+                updateSectionGradients();
+            });
+
+            // Function to update section gradients based on theme
+            function updateSectionGradients() {
+                const homeSectionDiv = document.querySelector('#home > div:first-child');
+                const contactSectionDiv = document.querySelector('#contact > div:first-child');
+
+                if (document.body.classList.contains('dark')) {
+                    homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-from)] to-[var(--gradient-dark-to)]';
+                    contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-to)] to-[var(--gradient-dark-from)]'; /* Reversed for contact */
+                } else {
+                    // Light mode: Use light home gradients for home/contact
+                    homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-from)] to-[var(--light-home-gradient-to)]';
+                    contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-to)] to-[var(--light-home-gradient-from)]'; /* Reversed for contact */
+                }
+            }
+            // Call on initial load
+            updateSectionGradients();
+
+
+            // --- Custom Scroll Animation Logic (Reverted to non-interruptible) ---
+
+            // Easing function for a "a tiny bit slower" acceleration and "even harder" deceleration (Quantic ease-out)
+            function easeOutQuint(t) {
+                return 1 - Math.pow(1 - t, 5);
+            }
+
+            // Custom scroll function that scrolls the entire window (non-interruptible)
+            function scrollToTarget(targetElement, duration) {
+                const startPosition = window.scrollY; // Current scroll position of the window
+                // Calculate target position, accounting for sticky header's height (100px due to smaller header)
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
+                const distance = targetPosition - startPosition;
+                let startTime = null;
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1); // Clamp progress between 0 and 1
+                    const easedProgress = easeOutQuint(progress); // Apply easing function
+
+                    window.scrollTo(0, startPosition + distance * easedProgress);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+                requestAnimationFrame(animation); // Start the animation
+            }
+
+            const homeP = document.querySelector('#home p');
+            if (homeP) {
+                 homeP.style.animation = 'fadeInUp 1.2s ease-out 0.3s forwards';
+            }
+
+
+            // --- Intersection Observer for scroll-in animations (only for section visibility) ---
+            const scrollObserverOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the item is visible
+            };
+
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Optionally, remove 'is-visible' if elements should re-animate on scroll out and back in
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, scrollObserverOptions);
+
+            // Apply observer to all elements with 'scroll-in-animation' class
+            sections.forEach(element => { // 'sections' is already defined and contains all section elements
+                scrollObserver.observe(element);
+            });
+
+            // Initial check for elements already in view on load
+            scrollObserver.takeRecords().forEach(entry => { // Process existing intersections
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+
+
+            // --- Intersection Observer for Active Navigation Link ---
+            // This observer watches sections and updates the active nav link when a section is in view
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = `#${entry.target.id}`;
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === sectionId) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                root: null, // viewport
+                rootMargin: '-50% 0px -49% 0px', // Trigger when section crosses the middle of the viewport
+                threshold: 0 // Will trigger as soon as it crosses
+            });
+
+            sections.forEach(section => {
+                navObserver.observe(section);
+            });
+
+            // --- Navigation Link Click Handler (manual activation and custom smooth scroll) ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default anchor jump
+
+                    // Remove 'active' from all nav links
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+
+                    // Add 'active' to the clicked link
+                    this.classList.add('active');
+
+                    // Use custom scroll function
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        scrollToTarget(targetSection, 4000); // Retained 4000ms duration for smoother feel
+                    }
+                });
+            });
+
+            // Set initial active link if page loads at a specific section or default to home
+            const initialHash = window.location.hash;
+            if (initialHash) {
+                const initialNavLink = document.querySelector(`.nav-link[href="${initialHash}"]`);
+                if (initialNavLink) {
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    initialNavLink.classList.add('active');
+                    const targetSection = document.querySelector(initialHash);
+                    if (targetSection) {
+                        scrollToTarget(targetSection, 100); // Shorter duration for initial load
+                    }
+                }
+            } else {
+                // Default to home being active on load if no hash
+                const homeNavLink = document.querySelector('.nav-link[href="#home"]');
+                if (homeNavLink) {
+                    homeNavLink.classList.add('active');
+                }
+            }
+
+            // --- Scroll Prompt Functionality (always visible) ---
+            if (scrollPrompt) {
+                scrollPrompt.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const activeNavLink = document.querySelector('.nav-link.active');
+                    if (activeNavLink) {
+                        const currentSectionId = activeNavLink.getAttribute('href');
+                        let currentIndex = Array.from(navLinks).findIndex(link => link.getAttribute('href') === currentSectionId);
+
+                        if (currentIndex < navLinks.length - 1) {
+                            currentIndex++;
+                        } else {
+                            currentIndex = 0; // Loop back to home
+                        }
+
+                        const nextTargetId = navLinks[currentIndex].getAttribute('href');
+                        const nextTargetSection = document.querySelector(nextTargetId);
+
+                        if (nextTargetSection) {
+                            navLinks.forEach(nav => nav.classList.remove('active'));
+                            navLinks[currentIndex].classList.add('active');
+                            scrollToTarget(nextTargetSection, 4000); // 4000ms duration for smoother feel
+                        }
+                    }
+                });
+            }
+
+            // --- "DNK" Logo click to scroll to top ---
+            document.getElementById('title').addEventListener('click', () => {
+                scrollToTarget(document.getElementById('home'), 1500); // Use custom scroll to home
+            });
+
+            // --- Email Copy to Clipboard Functionality ---
+            // The emailAddressLink's default mailto: behavior is now preserved.
+            // The copyEmailAction span is solely responsible for copying.
+            if (emailAddressLink) {
+                // Remove the preventDefault from the mailto link's direct event listener.
+                // This allows the mailto: protocol to be handled by the browser directly.
+                // The current setup has no direct listener on emailAddressLink, which is good.
+                // If there were one, it would look like:
+                // emailAddressLink.addEventListener('click', function(e) {
+                //    // e.preventDefault(); // THIS LINE WOULD BE REMOVED
+                // });
+            }
+
+
+            if (copyEmailAction) {
+                copyEmailAction.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default action for the span itself
+                    const email = "davidnoel.kruska@outlook.de";
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = email;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.textContent = 'Copied!';
+                        copyMessage.classList.add('opacity-100');
+                        setTimeout(() => {
+                            copyMessage.classList.remove('opacity-100');
+                            copyMessage.textContent = ''; // Clear text after fading out
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                        copyMessage.textContent = 'Failed to copy!';
+                        copyMessage.classList.add('opacity-100');
+                        setTimeout(() => {
+                            copyMessage.classList.remove('opacity-100');
+                            copyMessage.textContent = '';
+                        }, 1500);
+                    } finally {
+                        document.body.removeChild(tempInput);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
