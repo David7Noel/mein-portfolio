@@ -10,3 +10,5 @@
     # Ignoriere spezifische, nicht benötigte Dateien
     AddType videomp4 .htaccess.txt
     
+    # Ignore node_modules directory
+    node_modules/
