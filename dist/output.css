@@ -1,0 +1,1746 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Custom font import (Inter from Google Fonts) - THIS MUST BE THE FIRST @import RULE */
+*, ::before, ::after{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+::backdrop{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+::before,
+::after {
+  --tw-content: '';
+}
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+/*
+Remove the default font size and weight for headings.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+/*
+Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+/*
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+button,
+select {
+  text-transform: none;
+}
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+:-moz-focusring {
+  outline: auto;
+}
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  padding: 0;
+}
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+/*
+Prevent resizing textareas horizontally by default.
+*/
+textarea {
+  resize: vertical;
+}
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+/*
+Set the default cursor for buttons.
+*/
+button,
+[role="button"] {
+  cursor: pointer;
+}
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+.visible{
+  visibility: visible;
+}
+.absolute{
+  position: absolute;
+}
+.relative{
+  position: relative;
+}
+.sticky{
+  position: sticky;
+}
+.inset-0{
+  inset: 0px;
+}
+.z-10{
+  z-index: 10;
+}
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.mb-10{
+  margin-bottom: 2.5rem;
+}
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+.mb-8{
+  margin-bottom: 2rem;
+}
+.ml-2{
+  margin-left: 0.5rem;
+}
+.mr-1\.5{
+  margin-right: 0.375rem;
+}
+.mr-4{
+  margin-right: 1rem;
+}
+.mt-10{
+  margin-top: 2.5rem;
+}
+.mt-3{
+  margin-top: 0.75rem;
+}
+.mt-4{
+  margin-top: 1rem;
+}
+.mt-8{
+  margin-top: 2rem;
+}
+.flex{
+  display: flex;
+}
+.inline-flex{
+  display: inline-flex;
+}
+.hidden{
+  display: none;
+}
+.h-4{
+  height: 1rem;
+}
+.h-64{
+  height: 16rem;
+}
+.h-7{
+  height: 1.75rem;
+}
+.h-8{
+  height: 2rem;
+}
+.w-4{
+  width: 1rem;
+}
+.w-64{
+  width: 16rem;
+}
+.w-7{
+  width: 1.75rem;
+}
+.w-8{
+  width: 2rem;
+}
+.max-w-4xl{
+  max-width: 56rem;
+}
+.max-w-7xl{
+  max-width: 80rem;
+}
+.max-w-lg{
+  max-width: 32rem;
+}
+.flex-shrink-0{
+  flex-shrink: 0;
+}
+.flex-grow{
+  flex-grow: 1;
+}
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.cursor-default{
+  cursor: default;
+}
+.flex-col{
+  flex-direction: column;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.items-center{
+  align-items: center;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.gap-12{
+  gap: 3rem;
+}
+.gap-x-8{
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.gap-y-3{
+  row-gap: 0.75rem;
+}
+.gap-y-4{
+  row-gap: 1rem;
+}
+.space-y-32 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(8rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(8rem * var(--tw-space-y-reverse));
+}
+.space-y-6 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+.whitespace-nowrap{
+  white-space: nowrap;
+}
+.rounded-2xl{
+  border-radius: 1rem;
+}
+.rounded-full{
+  border-radius: 9999px;
+}
+.rounded-xl{
+  border-radius: 0.75rem;
+}
+.border{
+  border-width: 1px;
+}
+.border-t{
+  border-top-width: 1px;
+}
+.border-blue-400{
+  --tw-border-opacity: 1;
+  border-color: rgb(96 165 250 / var(--tw-border-opacity, 1));
+}
+.border-gray-200{
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
+.border-gray-800{
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity, 1));
+}
+.border-opacity-20{
+  --tw-border-opacity: 0.2;
+}
+.bg-gray-950{
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 7 18 / var(--tw-bg-opacity, 1));
+}
+.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.bg-gradient-to-br{
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+.from-\[var\(--gradient-dark-from\)\]{
+  --tw-gradient-from: var(--gradient-dark-from) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-\[var\(--gradient-dark-to\)\]{
+  --tw-gradient-from: var(--gradient-dark-to) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-\[var\(--light-home-gradient-from\)\]{
+  --tw-gradient-from: var(--light-home-gradient-from) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-\[var\(--light-home-gradient-to\)\]{
+  --tw-gradient-from: var(--light-home-gradient-to) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-blue-500{
+  --tw-gradient-from: #3b82f6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-\[var\(--gradient-dark-from\)\]{
+  --tw-gradient-to: var(--gradient-dark-from) var(--tw-gradient-to-position);
+}
+.to-\[var\(--gradient-dark-to\)\]{
+  --tw-gradient-to: var(--gradient-dark-to) var(--tw-gradient-to-position);
+}
+.to-\[var\(--light-home-gradient-from\)\]{
+  --tw-gradient-to: var(--light-home-gradient-from) var(--tw-gradient-to-position);
+}
+.to-\[var\(--light-home-gradient-to\)\]{
+  --tw-gradient-to: var(--light-home-gradient-to) var(--tw-gradient-to-position);
+}
+.to-indigo-600{
+  --tw-gradient-to: #4f46e5 var(--tw-gradient-to-position);
+}
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.p-12{
+  padding: 3rem;
+}
+.px-10{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-1\.5{
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.py-20{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.py-24{
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.font-bold{
+  font-weight: 700;
+}
+.font-extrabold{
+  font-weight: 800;
+}
+.font-medium{
+  font-weight: 500;
+}
+.font-semibold{
+  font-weight: 600;
+}
+.italic{
+  font-style: italic;
+}
+.leading-relaxed{
+  line-height: 1.625;
+}
+.leading-snug{
+  line-height: 1.375;
+}
+.tracking-wider{
+  letter-spacing: 0.05em;
+}
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+.text-gray-800{
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+}
+.text-gray-900{
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.opacity-0{
+  opacity: 0;
+}
+.opacity-100{
+  opacity: 1;
+}
+.opacity-80{
+  opacity: 0.8;
+}
+.opacity-90{
+  opacity: 0.9;
+}
+.opacity-95{
+  opacity: 0.95;
+}
+.shadow-lg{
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-xl{
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.drop-shadow-xl{
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition-all{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-opacity{
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-transform{
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-300{
+  transition-duration: 300ms;
+}
+.ease-out{
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Custom color variables for neon blue accents and new harmonious blues */
+:root {
+    /* Existing Dark Mode Neons - adjusted for less glow */
+    --neon-blue: #00F0FF; /* Bright cyan/electric blue */
+    --neon-blue-light: #66FFFF;
+    --neon-blue-dark: #00A3B5;
+    --neon-blue-glow-subtle: rgba(0, 240, 255, 0.2); /* Slightly softer glow */
+    --neon-blue-glow: rgba(0, 240, 255, 0.5); /* Slightly softer glow */
+    --neon-blue-glow-strong: rgba(0, 240, 255, 0.7); /* Slightly softer glow */
+
+    /* New harmonious blue/teal tones for dark mode */
+    --dark-blue-bg: #0D1117;
+    --deep-blue: #1A202C; /* Darker blue-grey, for button backgrounds */
+    --gradient-dark-from: #0A243F; /* Base of home gradient */
+    --gradient-dark-to: #005F6B;
+    --dark-menu-link-color: #9ca3af; /* Default grey for dark mode menu links */
+    --dark-menu-link-hover-color: var(--neon-blue-light); /* Hover color for dark mode menu links */
+    --dark-button-bg: var(--gradient-dark-from); /* Button background in dark mode, derived from home gradient */
+    --dark-button-hover-bg: var(--gradient-dark-to); /* Button hover background in dark mode, derived from home gradient */
+    --dark-footer-bg: #0C1014; /* Very dark blue-gray */
+    --dark-footer-text: #6B7280; /* Medium-dark grey for footer text */
+
+
+    /* --- UPDATED LIGHT MODE COLORS --- */
+    --light-bg: #d8d8f7; /* Reverted lavender for light mode background */
+    --light-text-general: #6F7A8A; /* Lighter blue-grey for main text */
+    --light-text-italic: #8A95A6; /* Slightly lighter for italic contrast */
+    --light-header-title-color: #4A5666; /* Slightly darker bluer-grey for section titles */
+
+    /* Light Mode Gradients for Home/Contact - minimal difference, but visible */
+    --light-home-gradient-from: #d0d0ed; /* Subtle gradient start for Home/Contact */
+    --light-home-gradient-to: #e0e0f5;   /* Subtle gradient end for Home/Contact */
+
+    /* Light Mode Gradients for other sections - now a darker nuance */
+    --light-section-bg: #C9C9E6; /* Darker nuance for About/Work boxes, harmonious */
+    --light-section-border: #e0e0f0; /* Subtle border for sections */
+
+    --light-nav-link-inactive: #8C96A5; /* Lighter, more harmonious inactive menu link color */
+    --light-nav-link-active-hover: #00FFFF; /* Bright neon cyan for hover */
+    --light-nav-link-active: #00A3B5; /* The original neon-blue-dark, for active state (DNK color) */
+
+    --light-button-bg: #00A3B5; /* Base button color in light mode, same as active link */
+    --light-button-hover-bg: #00FFFF; /* Button hover color in light mode, same as hover link */
+
+    --light-footer-bg: var(--light-section-bg); /* Footer background in light mode matches section background */
+    --light-footer-text: #9CA3AF; /* Light grey for footer text */
+}
+/* Apply Inter font to body and smooth transitions for theme change */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6; /* Explicitly set line height */
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Slower, more elegant transition */
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+    scroll-behavior: smooth; /* Native smooth scrolling for general user interaction */
+}
+/* Default Light Mode - reverted to previous lavender tone with darker text */
+body:not(.dark) {
+    background-color: var(--light-bg);
+    color: var(--light-text-general);
+}
+/* Dark Mode styles */
+body.dark {
+    background-color: var(--dark-blue-bg); /* Deep, sophisticated dark blue-gray (Omnisphere-like background) */
+    color: #e2e8f0; /* Soft white for readability */
+}
+/* Loading Overlay Styling */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-blue-bg); /* Match dark mode background */
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    z-index: 9999; /* Always on top */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Subtle glow */
+}
+#loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+#loading-overlay::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--neon-blue); /* Spinner color with neon accent */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-top: 20px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Header and sticky nav */
+header .header-content {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.9); /* Slightly more opaque for dark mode */
+    backdrop-filter: blur(12px) saturate(180%); /* Enhanced blur and saturation */
+    -webkit-backdrop-filter: blur(12px) saturate(180%); /* For Safari */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+    transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border for definition */
+    padding-top: 0.5rem; /* Reduced top padding */
+    padding-bottom: 0.5rem; /* Reduced bottom padding */
+}
+/* Adjust sticky nav background for light mode */
+body:not(.dark) .sticky-nav {
+    background: rgba(216, 216, 247, 0.95); /* Match new light mode body background, slightly more opaque */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.sticky-nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+/* Nav Link Base Styling for compact menu */
+.sticky-nav a.nav-link { /* Combined with the newer .nav-link rules */
+    position: relative;
+    text-decoration: none;
+    font-size: 0.9rem; /* Smaller font size for menu links */
+    font-weight: 600; /* Semi-bold */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem; /* Even smaller height for links */
+    padding-left: 0.6rem; /* px-2.5 */
+    padding-right: 0.6rem; /* px-2.5 */
+    border-radius: 0.3rem; /* rounded-sm */
+    cursor: pointer;
+}
+/* Dark Mode Nav Link Colors */
+body.dark .nav-link {
+    color: var(--dark-menu-link-color);
+}
+body.dark .nav-link:hover {
+    color: var(--dark-menu-link-hover-color);
+    transform: translateY(-1px); /* Slight lift */
+    text-shadow: 0 0 8px var(--neon-blue-glow-subtle); /* Softer glow on hover */
+}
+/* Light Mode Nav Link Colors (adjusted for contrast) */
+body:not(.dark) .nav-link {
+    color: var(--light-nav-link-inactive);
+}
+body:not(.dark) .nav-link:hover {
+    color: var(--light-nav-link-active-hover);
+    transform: translateY(-1px);
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+/* Active Navigation Link Styling - Neon Glow Underline */
+.sticky-nav .nav-link.active {
+    font-weight: 700;
+}
+/* Dark Mode Active Nav Link Color */
+body.dark .sticky-nav .nav-link.active {
+    color: var(--neon-blue); /* Bright neon blue for active state in dark theme */
+    text-shadow: 0 0 10px var(--neon-blue-glow); /* Reduced glow */
+}
+/* Light Mode Active Nav Link Color */
+body:not(.dark) .sticky-nav .nav-link.active {
+    color: var(--light-nav-link-active);
+    text-shadow: 0 0 10px rgba(0, 163, 181, 0.5); /* Glow for active link */
+}
+/* Underline for active navigation link - thin, glowing neon */
+.sticky-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.15rem; /* THIS IS THE CORRECTED POSITIONING for Inter font */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%; /* Shorter line */
+    height: 2px;
+    border-radius: 1px;
+    transition: all 0.4s ease-in-out;
+    animation: pulseUnderline 1.5s infinite alternate ease-in-out;
+}
+/* Dark Mode Underline */
+body.dark .sticky-nav .nav-link.active::after {
+    background: var(--neon-blue);
+    box-shadow: 0 0 7px var(--neon-blue-glow), 0 0 12px var(--neon-blue-glow-strong); /* Reduced glow */
+}
+/* Light Mode Underline - NEW */
+body:not(.dark) .sticky-nav .nav-link.active::after {
+    background: var(--light-nav-link-active);
+    box-shadow: 0 0 7px rgba(0, 163, 181, 0.5), 0 0 12px rgba(0, 163, 181, 0.7);
+}
+/* Keyframes for subtle pulsing effect on active underline */
+@keyframes pulseUnderline {
+    0% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+    100% { transform: translateX(-50%) scaleX(1.1); opacity: 0.8; }
+}
+/* Logo Styling for h1#title - now "DNK" as a more abstract logo */
+#title {
+    font-family: 'Inter', sans-serif; /* Ensure Inter font for logo */
+    font-weight: 800; /* Extra bold for logo */
+    text-transform: uppercase; /* Make it uppercase for a logo feel */
+    letter-spacing: 0.08em; /* Slightly tighter letter spacing for compact look */
+    line-height: 1; /* Tighter line height */
+    white-space: nowrap; /* Keep it on one line */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Smooth transitions for hover */
+    font-size: 1.2rem; /* Even smaller font for DNK as a logo */
+}
+body.dark #title {
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px var(--neon-blue-glow-subtle), /* Reduced glow */
+                 0 0 15px var(--neon-blue-glow),         /* Reduced glow */
+                 0 0 25px var(--neon-blue-glow-strong); /* Reduced glow */
+}
+body.dark #title:hover {
+    color: var(--neon-blue-light);
+    text-shadow: 0 0 12px var(--neon-blue-glow), /* Reduced glow */
+                 0 0 20px var(--neon-blue-glow-strong), /* Reduced glow */
+                 0 0 30px rgba(0, 240, 255, 0.7); /* Reduced glow */
+    transform: scale(1.02); /* Subtle scale on hover */
+}
+body:not(.dark) #title {
+    color: var(--light-nav-link-active); /* Default color for DNK in light mode, now matches menu active */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+body:not(.dark) #title:hover {
+    color: var(--light-nav-link-active-hover); /* More neon hover for DNK */
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Glow for new neon hover */
+    transform: scale(1.02);
+}
+/* Adjust header layout for mobile */
+@media (max-width: 767px) {
+    .sticky-nav > div { /* Target the inner div containing logo, nav, button */
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center items horizontally */
+        text-align: center;
+        gap: 1rem; /* Space between stacked elements */
+    }
+    #title {
+        font-size: 1.1rem; /* Even smaller font for mobile DNK logo */
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem; /* Reduced margin */
+    }
+    .sticky-nav nav ul {
+        gap-x: 1.5rem; /* Reduce gap between nav links on mobile */
+    }
+}
+/* Theme Toggle Button specific styles for a more polished look */
+#mode-toggle {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 0.3rem 0.6rem; /* Restored slightly larger padding */
+    font-size: 0.7rem; /* Restored slightly larger font size */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out; /* Ensure smooth transition */
+}
+body.dark #mode-toggle {
+    background: var(--dark-button-bg); /* Use dark button bg */
+    color: #e2e8f0; /* Ensure text is visible */
+}
+body.dark #mode-toggle:hover {
+    background: var(--dark-button-hover-bg); /* Use dark button hover bg */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px var(--neon-blue-glow); /* Reduced glow, consistent with other hovers */
+    border-color: var(--neon-blue-light);
+    transform: scale(1.05);
+}
+/* Light Mode Button Style (when light mode is active) */
+body:not(.dark) #mode-toggle {
+    background: var(--light-button-bg); /* Use variable for light mode button background */
+    color: #e2e8f0; /* Ensure text is visible on color */
+    border-color: var(--light-button-bg);
+}
+body:not(.dark) #mode-toggle:hover {
+    background: var(--light-button-hover-bg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 255, 255, 0.4);
+    border-color: var(--light-button-hover-bg);
+}
+/* Section anchor offset for smooth scrolling */
+main {
+    scroll-margin-top: 60px;
+}
+section[id] {
+    scroll-margin-top: 100px; /* Adjusted to account for smaller sticky header */
+    padding: 4rem; /* More generous padding for sections */
+    border-radius: 1.5rem; /* Larger border-radius for softer look */
+    transition: all 0.4s ease-in-out; /* Smooth transition for section background/shadow changes */
+    transform: perspective(1000px) rotateY(0deg) scale(1); /* Initial state for hover effect */
+    min-height: 70vh; /* Reduced min-height for sections, especially home */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Specifically target home section for further height reduction and bottom padding */
+#home {
+    min-height: 60vh; /* Make home section even smaller */
+    padding-top: 6rem; /* Adjusted padding top */
+    padding-bottom: 18rem; /* Increased padding bottom significantly for scroll prompt */
+}
+@media (max-width: 767px) {
+    #home {
+        min-height: 70vh; /* Adjust for mobile if needed */
+        padding-top: 4rem;
+        padding-bottom: 12rem; /* Adjusted for mobile */
+    }
+}
+/* Adjust section background for light mode */
+body:not(.dark) section[id]:not(#home):not(#contact) {
+    background-color: var(--light-section-bg); /* Darker nuance for About/Work boxes, harmonious */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Lighter shadow for light mode */
+    border: 1px solid var(--light-section-border); /* Subtle border for definition */
+}
+/* Ensure section headings and paragraphs also pick up the dark color in light mode */
+body:not(.dark) section h2 {
+    color: var(--light-header-title-color); /* Headings use new header title color */
+    text-shadow: none; /* Ensure no shadows in light mode headings */
+}
+body:not(.dark) section p {
+    color: var(--light-text-general);
+}
+body:not(.dark) section p.italic {
+    color: var(--light-text-italic);
+}
+/* Section Hover Effect - subtle 3D tilt */
+section[id]:hover {
+    transform: perspective(1000px) rotateY(1deg) scale(1.005); /* Slight tilt for interaction */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* More pronounced shadow on hover */
+}
+body:not(.dark) section[id]:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Slightly lighter hover shadow for light mode */
+}
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem; /* More rounded images */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow for images */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+img:hover {
+    transform: scale(1.02); /* Slight scale on image hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+/* Specific styling for the profile picture container itself - NOW ONLY THE CONTAINER FRAME */
+.profile-picture-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16rem; /* w-64 */
+    height: 16rem; /* h-64 */
+    border-radius: 9999px; /* rounded-full */
+    overflow: hidden;
+    border: 8px solid; /* Thicker border */
+    -o-border-image: linear-gradient(45deg, var(--neon-blue), #00BFFF, #00A3B5) 1;
+       border-image: linear-gradient(45deg, var(--neon-blue), #00BFFF, #00A3B5) 1; /* Elegant gradient border */
+    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.15), 0 0 18px var(--neon-blue-glow), 0 0 28px rgba(0, 240, 255, 0.1); /* Reduced glow */
+    animation: floatEffect 5s ease-in-out infinite alternate; /* Subtle floating animation */
+}
+body:not(.dark) .profile-picture-container {
+    -o-border-image: linear-gradient(45deg, var(--light-nav-link-active), var(--light-nav-link-active-hover)) 1;
+       border-image: linear-gradient(45deg, var(--light-nav-link-active), var(--light-nav-link-active-hover)) 1;
+    box-shadow: 0 0 0 8px rgba(0, 163, 181, 0.15), 0 0 18px rgba(0, 163, 181, 0.5), 0 0 28px rgba(0, 163, 181, 0.1);
+}
+.profile-picture-container:hover {
+    transform: scale(1.06); /* More pronounced scale on hover */
+    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.2), 0 0 25px var(--neon-blue-glow), 0 0 35px rgba(0, 240, 255, 0.15); /* Reduced glow */
+}
+body:not(.dark) .profile-picture-container:hover {
+     box-shadow: 0 0 0 8px rgba(0, 255, 255, 0.2), 0 0 25px rgba(0, 255, 255, 0.6), 0 0 35px rgba(0, 255, 255, 0.15);
+}
+/* Styling for the actual profile photo (the inner image) - NOW FILLS THE CONTAINER */
+.profile-picture-container img {
+    width: 100%; /* w-full */
+    height: 100%; /* h-full */
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 9999px; /* rounded-full */
+    /* Removed border and box-shadow here, they are now on the parent container */
+}
+/* Profile picture inner circle overlay - UPDATED to be completely transparent */
+.profile-picture-container div.absolute.inset-0 { /* Target the div specifically */
+    background: none; /* No background color */
+    opacity: 0; /* Completely transparent */
+    transition: opacity 0.3s ease-in-out; /* Keep transition for consistency */
+}
+/* Ensure it remains transparent on hover */
+.profile-picture-container:hover div.absolute.inset-0 {
+    opacity: 0;
+}
+/* GitHub Button Hover styles - Dark Mode (for the button in Work section) */
+body.dark a[href*="github.com"].inline-flex {
+    background: var(--dark-button-bg); /* Use dark button bg */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out; /* Ensure smooth transition */
+}
+body.dark a[href*="github.com"].inline-flex:hover {
+    background: var(--dark-button-hover-bg); /* Use dark button hover bg */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px var(--neon-blue-glow);
+    border-color: var(--neon-blue-light);
+    transform: scale(1.05);
+}
+/* GitHub Link in Work section (Light Mode - for the button) */
+body:not(.dark) a[href*="github.com"].inline-flex {
+    background: var(--light-button-bg);
+    color: #e2e8f0; /* Ensure text is visible */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-button-bg);
+}
+body:not(.dark) a[href*="github.com"].inline-flex:hover {
+    background: var(--light-button-hover-bg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 255, 255, 0.4);
+    border-color: var(--light-button-hover-bg);
+}
+/* Footer Styling */
+footer {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+body.dark footer {
+    background-color: var(--dark-footer-bg);
+    color: var(--dark-footer-text);
+    border-top-color: var(--dark-blue-bg); /* Border matches dark background */
+}
+body:not(.dark) footer {
+    background-color: var(--light-footer-bg); /* Use the slightly darker footer color */
+    color: var(--light-footer-text);
+    border-top-color: var(--light-section-border); /* Matches light section border */
+}
+/* Keyframes for subtle floating effect */
+@keyframes floatEffect {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(0.5deg); }
+    100% { transform: translateY(0px) rotate(-0.5deg); }
+}
+/* Subtle icon styling */
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+/* Styles for scroll-in animation - even slower and with scale */
+.scroll-in-animation {
+    opacity: 0;
+    transform: translateY(250px) scale(0.97); /* Start lower and slightly smaller */
+    transition: opacity 1.8s ease-out, transform 1.8s ease-out; /* Even longer, smoother transition */
+    will-change: opacity, transform; /* Optimize for animation */
+}
+.scroll-in-animation.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Move to final position and full scale */
+}
+/* h2 base styling back to normal */
+section h2 {
+    /* No special span wrapping, no animation-delay per char */
+    transition: color 0.3s, text-shadow 0.3s; /* Only color/shadow for general transitions */
+}
+/* Original animation for Home section paragraphs */
+#home p {
+    animation: fadeInUp 1.2s ease-out 0.3s forwards; /* Keep existing fade-in for paragraph */
+}
+@keyframes fadeInUp { /* Re-define keyframes if they were only for h2 */
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+/* Scroll Prompt Styling */
+#scroll-prompt {
+    position: absolute;
+    bottom: -75%; /* Still 3% relative to its parent, but parent now has more padding-bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    opacity: 1; /* Always visible */
+    transition: opacity 0.5s ease-out, color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+    animation: bounceUpDown 2s infinite alternate ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none; /* Make it transparent */
+    border: none; /* Remove border */
+    cursor: pointer; /* Indicate it's clickable */
+    padding: 0; /* Remove default padding */
+    pointer-events: auto; /* Ensure it's always clickable */
+}
+/* Dark mode scroll prompt color */
+body.dark #scroll-prompt {
+    color: #e2e8f0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+/* Light mode scroll prompt color */
+body:not(.dark) #scroll-prompt {
+    color: var(--light-text-general); /* Use general text color for light mode */
+    text-shadow: 0 0 5px rgba(50, 50, 50, 0.2);
+}
+#scroll-prompt svg {
+    margin-top: 10px;
+    animation: fadeInOutArrow 2s infinite ease-in-out;
+    /* SVG color will inherit from parent #scroll-prompt */
+}
+/* Removed hidden class for scroll-prompt */
+@keyframes bounceUpDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+@keyframes fadeInOutArrow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+/* Hide default scrollbar for a cleaner look, optional */
+body::-webkit-scrollbar {
+    display: none;
+}
+body {
+    -ms-overflow-style: none;   /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+/* Styling for copy message */
+.copy-message {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 0.75rem; /* Smaller font for copy message */
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    color: #00F0FF; /* Neon blue for feedback */
+    white-space: nowrap; /* Prevent wrapping */
+}
+body:not(.dark) .copy-message {
+    color: var(--light-nav-link-active); /* Light mode active link color */
+}
+/* Contact Icon base styling */
+.contact-icon {
+    width: 1.5em; /* Retained slightly larger default size for icons */
+    height: 1.5em;
+    vertical-align: middle;
+    fill: currentColor; /* Inherit color from parent */
+    transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add filter transition */
+}
+/* --- Dark Mode Email Icon Specific Styles (No aggressive hover) --- */
+body.dark .contact-icon.email-icon .envelope-outer-border {
+    fill: none; /* Make outer boundary transparent */
+    stroke: currentColor; /* Only show the stroke/border */
+    stroke-width: 1.5; /* Adjust stroke thickness */
+}
+body.dark .contact-icon.email-icon .envelope-flap {
+    fill: currentColor; /* Flap should be filled */
+}
+body.dark .contact-icon.email-icon .envelope-body {
+    fill: none; /* Make body transparent */
+    stroke: currentColor; /* Only show the stroke/border */
+    stroke-width: 1.5; /* Adjust stroke thickness */
+}
+/* Dark mode: ensure default contact link hover applies without extra glow */
+body.dark #contact ul li a {
+    color: #a3c1e0; /* Default color for text links in dark mode */
+}
+body.dark #contact ul li a:hover {
+    color: var(--dark-menu-link-hover-color); /* Matches dark mode menu hover */
+    text-shadow: none; /* No extra glow for these elements on hover */
+}
+body.dark .copy-text-action {
+    color: #a3c1e0; /* Default text color for copy action in dark mode */
+}
+body.dark .copy-text-action:hover {
+    color: var(--dark-menu-link-hover-color); /* Hover color */
+    text-shadow: none; /* No extra glow */
+    transform: translateY(-1px);
+}
+/* Ensure social icons in dark mode get hover effect from their parents */
+body.dark .contact-icon-link .contact-icon {
+    color: currentColor; /* Inherit color from parent link */
+}
+body.dark .contact-icon-link:hover .contact-icon {
+    color: var(--dark-menu-link-hover-color); /* Inherit hover color from parent link */
+}
+/* --- Light Mode Email Icon Specific Styles (Transparent body, DNK color, softer neon hover) --- */
+body:not(.dark) .contact-icon.email-icon {
+    color: var(--light-nav-link-active); /* DNK color */
+}
+body:not(.dark) .contact-icon.email-icon .envelope-outer-border {
+    fill: none; /* Make outer boundary transparent */
+    stroke: currentColor; /* Outline will have current color */
+    stroke-width: 1.5;
+}
+body:not(.dark) .contact-icon.email-icon .envelope-flap {
+    fill: currentColor; /* Flap will have current color */
+}
+body:not(.dark) .contact-icon.email-icon .envelope-body {
+    fill: none; /* Body transparent */
+    stroke: currentColor; /* Outline will have current color */
+    stroke-width: 1.5;
+}
+/* --- Light Mode LinkedIn/GitHub Icon Styles (DNK color, softer neon hover) --- */
+body:not(.dark) .contact-icon-link:not(#email-address-link) .contact-icon {
+    color: var(--light-nav-link-active); /* DNK color */
+}
+/* GitHub specific filter for "heller werden" in light mode */
+body:not(.dark) .contact-icon-link[href*="github.com"] .contact-icon {
+    filter: brightness(1.1); /* Make GitHub icon slightly brighter in light mode */
+}
+/* --- Light Mode Text Colors (Email address & Copy to Clipboard - inactive menu link color, softer neon hover) --- */
+body:not(.dark) #email-address-link, /* Email address text */
+body:not(.dark) .copy-text-action span /* Copy to clipboard text */
+{
+    color: var(--light-nav-link-inactive); /* Initial color for email text & copy text */
+}
+/* Ensure the copy to clipboard SVG gets DNK color */
+body:not(.dark) .copy-text-action svg {
+    color: var(--light-nav-link-active);
+}
+/* Unified Light Mode Hover for all contact elements (icons and text) */
+body:not(.dark) #email-address-link:hover,
+body:not(.dark) #email-address-link:hover .contact-icon, /* Email icon on hover */
+body:not(.dark) .copy-text-action:hover, /* Copy text on hover */
+body:not(.dark) .copy-text-action:hover svg, /* Copy icon on hover */
+body:not(.dark) .contact-icon-link:not(#email-address-link):hover, /* Social link text on hover */
+body:not(.dark) .contact-icon-link:not(#email-address-link):hover .contact-icon /* Social icons on hover */
+{
+    color: var(--light-nav-link-active-hover); /* Cyan-neon on hover */
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 255, 255, 0.15); /* Softer neon glow */
+}
+/* Specific styles for email link text */
+#email-address-link span {
+    font-size: 1.15rem; /* Retained slightly larger font for email link text */
+}
+/* Custom styling for the copy-to-clipboard span (not a button) */
+.copy-text-action {
+    display: inline-flex; /* Use inline-flex to keep text and icon together */
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem; /* Slightly larger text for visibility, but smaller than email */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: -0.5rem; /* Adjusted to bring it even closer to email address */
+}
+/* Dark Mode copy text action (reverted to default dark mode styles) */
+body.dark .copy-text-action {
+    color: #a3c1e0; /* Default text color */
+}
+body.dark .copy-text-action:hover {
+    color: var(--dark-menu-link-hover-color); /* Hover color */
+    text-shadow: none; /* No extra glow */
+    transform: translateY(-1px);
+}
+.copy-text-action svg {
+    width: 1em; /* Icon size relative to font size */
+    height: 1em;
+    margin-right: 0.4rem;
+    fill: currentColor;
+}
+/* Contact list item layout - Vertical stack, centered */
+#contact ul {
+    display: flex;
+    flex-direction: column; /* Stack primary contact methods vertically */
+    align-items: center;
+    gap: 1.5rem; /* Increased gap between all primary items for equal spacing */
+}
+/* Specific styling for the li that contains LinkedIn and GitHub */
+#contact ul li.social-links {
+    flex-direction: row; /* Make LinkedIn and GitHub appear side-by-side */
+    gap: 2.5rem; /* Gap between LinkedIn and GitHub */
+    margin-top: 0.5rem; /* Slightly more space from copy to clipboard block */
+}
+/* --- KONTAKTFORMULAR SPEZIFISCHES STYLING --- */
+.contact-form-container {
+    background-color: transparent; /* Container hat keinen Hintergrund, die Sektion kümmert sich darum */
+    color: inherit; /* Textfarbe von der übergeordneten Sektion erben */
+    border-radius: 1.5rem; /* Gleicher Border-Radius wie die Sektion */
+    padding: 2rem; /* Konsistenter Innenabstand */
+}
+.contact-form-label {
+    /* Tailwind @apply Anweisungen für Labels */
+    margin-bottom: 0.25rem;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    /* Farben werden durch Light/Dark Body-Styles bestimmt */
+}
+.contact-form-input, .contact-form-textarea {
+    /* Tailwind @apply Anweisungen für Input-Felder und Textareas */
+    width: 100%;
+    resize: vertical;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+    /* Farben werden durch Dark/Light Modus bestimmt */
+}
+/* Dark Mode Input-Felder und Textareas */
+body.dark .contact-form-input,
+body.dark .contact-form-textarea {
+    background-color: var(--deep-blue); /* Dunkelblaugrauer Hintergrund */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtiler heller Rand */
+    color: #e2e8f0; /* Heller Text */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3); /* Innerer Schatten für Tiefe */
+}
+body.dark .contact-form-input::-moz-placeholder, body.dark .contact-form-textarea::-moz-placeholder {
+    color: #a0aec0; /* Hellerer grauer Platzhalter */
+}
+body.dark .contact-form-input::placeholder,
+body.dark .contact-form-textarea::placeholder {
+    color: #a0aec0; /* Hellerer grauer Platzhalter */
+}
+/* Light Mode Input-Felder und Textareas */
+body:not(.dark) .contact-form-input,
+body:not(.dark) .contact-form-textarea {
+    background-color: #f8f8fb; /* Sehr heller Hintergrund */
+    border: 1px solid var(--light-section-border); /* Subtiler heller Rand */
+    color: var(--light-text-general); /* Dunklerer Text */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtiler innerer Schatten */
+}
+body:not(.dark) .contact-form-input::-moz-placeholder, body:not(.dark) .contact-form-textarea::-moz-placeholder {
+    color: #94a3b8; /* Mittlerer grauer Platzhalter */
+}
+body:not(.dark) .contact-form-input::placeholder,
+body:not(.dark) .contact-form-textarea::placeholder {
+    color: #94a3b8; /* Mittlerer grauer Platzhalter */
+}
+/* Fokus-Zustand für Formularfelder */
+.contact-form-input:focus, .contact-form-textarea:focus {
+    outline: none;
+    border-color: var(--neon-blue); /* Neonblauer Rand für Dark Mode */
+    box-shadow: 0 0 0 3px var(--neon-blue-glow-subtle); /* Subtiler Neon-Glow */
+}
+body:not(.dark) .contact-form-input:focus,
+body:not(.dark) .contact-form-textarea:focus {
+    border-color: var(--light-nav-link-active); /* Light Mode aktive Farbe */
+    box-shadow: 0 0 0 3px rgba(0, 163, 181, 0.3); /* Light Mode Glow */
+}
+.contact-submit-button {
+    /* Tailwind @apply Anweisungen für den Senden-Button */
+    display: flex;
+    width: 100%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    justify-content: center;
+    border-radius: 0.375rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    /* Farben werden durch Dark/Light Modus bestimmt */
+}
+/* Dark Mode Senden-Button */
+body.dark .contact-submit-button {
+    background: var(--dark-button-bg); /* Dark Mode Button-Hintergrund */
+    color: #e2e8f0; /* Heller Text */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.dark .contact-submit-button:hover {
+    background: var(--dark-button-hover-bg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px var(--neon-blue-glow);
+    border-color: var(--neon-blue-light);
+    transform: translateY(-2px) scale(1.02);
+}
+/* Light Mode Senden-Button */
+body:not(.dark) .contact-submit-button {
+    background: var(--light-button-bg); /* Light Mode Button-Hintergrund */
+    color: #e2e8f0; /* Heller Text */
+    border: 1px solid var(--light-button-bg);
+}
+body:not(.dark) .contact-submit-button:hover {
+    background: var(--light-button-hover-bg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 255, 255, 0.4);
+    border-color: var(--light-button-hover-bg);
+    transform: translateY(-2px) scale(1.02);
+}
+/* Statusmeldungen für Formular */
+.form-status-message {
+    /* Tailwind @apply Anweisungen für Statusmeldungen */
+    margin-top: 1.5rem;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+/* Farben für Erfolgs-, Fehler- und Info-Status */
+.form-status-success{
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(187 247 208 / var(--tw-text-opacity, 1));
+}
+.form-status-error{
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
+}
+.form-status-info{
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(191 219 254 / var(--tw-text-opacity, 1));
+}
+.hover\:scale-105:hover{
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-\[1\.005\]:hover{
+  --tw-scale-x: 1.005;
+  --tw-scale-y: 1.005;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group:hover .group-hover\:opacity-20{
+  opacity: 0.2;
+}
+@media (min-width: 640px){
+  .sm\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 768px){
+  .md\:ml-5{
+    margin-left: 1.25rem;
+  }
+  .md\:mt-0{
+    margin-top: 0px;
+  }
+  .md\:flex-row{
+    flex-direction: row;
+  }
+  .md\:justify-end{
+    justify-content: flex-end;
+  }
+  .md\:text-left{
+    text-align: left;
+  }
+}
+@media (min-width: 1024px){
+  .lg\:flex-row{
+    flex-direction: row;
+  }
+  .lg\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .lg\:text-left{
+    text-align: left;
+  }
+}
+@media (prefers-color-scheme: dark){
+  .dark\:border-gray-700{
+    --tw-border-opacity: 1;
+    border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
+  }
+  .dark\:bg-gray-900{
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+  }
+  .dark\:text-gray-100{
+    --tw-text-opacity: 1;
+    color: rgb(243 244 246 / var(--tw-text-opacity, 1));
+  }
+  .dark\:text-gray-300{
+    --tw-text-opacity: 1;
+    color: rgb(209 213 219 / var(--tw-text-opacity, 1));
+  }
+  .dark\:text-white{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+  }
+}
