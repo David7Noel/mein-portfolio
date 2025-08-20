@@ -270,84 +270,102 @@
             }
 
             // --- KONTAKTFORMULAR JAVASCRIPT LOGIK ---
-    // WICHTIG: Die IDs der Formularfelder wurden von 'name', 'email', 'subject', 'message'
-    //          zu 'form-name', 'form-email', 'form-subject', 'form-message' geändert,
-    //          um Konflikte mit anderen IDs auf der Seite zu vermeiden.
-    //          Stelle sicher, dass deine HTML-Formularfelder diese neuen IDs haben.
-    const contactForm = document.getElementById('contactForm');
-    const formStatusMessage = document.getElementById('form-status-message');
+// WICHTIG: Die IDs der Formularfelder wurden von 'name', 'email', 'subject', 'message'
+//          zu 'form-name', 'form-email', 'form-subject', 'form-message' geändert,
+//          um Konflikte mit anderen IDs auf der Seite zu vermeiden.
+//          Stelle sicher, dass deine HTML-Formularfelder diese neuen IDs haben.
+const contactForm = document.getElementById('contactForm');
+const formStatusMessage = document.getElementById('form-status-message');
 
-    if (contactForm && formStatusMessage) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seitenneuladung)
+if (contactForm && formStatusMessage) {
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seitenneuladung)
 
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const subject = document.getElementById('form-subject').value.trim();
-            const message = document.getElementById('form-message').value.trim();
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const subject = document.getElementById('form-subject').value.trim();
+        const message = document.getElementById('form-message').value.trim();
 
-            // Einfache Validierung
-            if (!name || !email || !subject || !message) {
-                displayFormStatus('Bitte füllen Sie alle Felder aus.', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                displayFormStatus('Bitte geben Sie eine gültige E-Mail-Adresse ein.', 'error');
-                return;
-            }
-
-            displayFormStatus('Sende Ihre Nachricht...', 'info');
-
-            // Simulierte API-Aufruf (ersetze dies später durch einen echten API-Aufruf)
-            setTimeout(() => {
-                const simulationSuccess = true; // Ändere dies auf false, um einen Fehler zu simulieren
-
-                if (simulationSuccess) {
-                    displayFormStatus('Ihre Nachricht wurde erfolgreich gesendet! Ich melde mich in Kürze bei Ihnen.', 'success');
-                    contactForm.reset(); // Formularfelder nach Erfolg zurücksetzen
-                } else {
-                    displayFormStatus('Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.', 'error');
-                }
-            }, 1500); // Simulierte Netzwerkverzögerung
-        });
-    }
-
-    /**
-     * Zeigt eine Statusmeldung für das Kontaktformular an.
-     * @param {string} message - Die anzuzeigende Nachricht.
-     * @param {'success' | 'error' | 'info'} type - Der Nachrichtentyp (bestimmt das Styling).
-     */
-    function displayFormStatus(message, type) {
-        formStatusMessage.textContent = message;
-        // Alle vorherigen Statusklassen und den versteckten Zustand entfernen
-        formStatusMessage.classList.remove('hidden', 'form-status-success', 'form-status-error', 'form-status-info');
-
-        // Die entsprechende Klasse basierend auf dem Nachrichtentyp hinzufügen
-        if (type === 'success') {
-            formStatusMessage.classList.add('form-status-success');
-        } else if (type === 'error') {
-            formStatusMessage.classList.add('form-status-error');
-        } else if (type === 'info') {
-            formStatusMessage.classList.add('form-status-info');
+        // Einfache Validierung
+        if (!name || !email || !subject || !message) {
+            displayFormStatus('Bitte füllen Sie alle Felder aus.', 'error');
+            return;
         }
-        formStatusMessage.classList.remove('hidden'); // Sicherstellen, dass die Nachricht sichtbar ist
 
-        // Erfolgs-/Fehlermeldungen nach ein paar Sekunden automatisch ausblenden
-        if (type === 'success' || type === 'error') {
-            setTimeout(() => {
-                formStatusMessage.classList.add('hidden');
-            }, 5000); // Nachricht verschwindet nach 5 Sekunden
+        if (!isValidEmail(email)) {
+            displayFormStatus('Bitte geben Sie eine gültige E-Mail-Adresse ein.', 'error');
+            return;
         }
-    }
 
-    /**
-     * Validiert das Format einer E-Mail-Adresse.
-     * @param {string} email - Der zu validierende E-Mail-String.
-     * @returns {boolean} True, wenn die E-Mail gültig ist, sonst False.
-     */
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+        displayFormStatus('Sende Ihre Nachricht...', 'info');
+
+        // ECHTER API-AUFRUF
+        const formData = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+        };
+
+        try {
+            const response = await fetch('https://website-holy-haze-9007.fly.dev/api/send_email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                displayFormStatus('Ihre Nachricht wurde erfolgreich gesendet! Ich melde mich in Kürze bei Ihnen.', 'success');
+                contactForm.reset();
+            } else {
+                displayFormStatus(`Fehler: ${result.detail}`, 'error');
+            }
+        } catch (error) {
+            console.error('Fetch Error:', error);
+            displayFormStatus('Ein Verbindungsfehler ist aufgetreten. Bitte versuchen Sie es später erneut.', 'error');
+        }
+    });
+}
+
+/**
+ * Zeigt eine Statusmeldung für das Kontaktformular an.
+ * @param {string} message - Die anzuzeigende Nachricht.
+ * @param {'success' | 'error' | 'info'} type - Der Nachrichtentyp (bestimmt das Styling).
+ */
+function displayFormStatus(message, type) {
+    formStatusMessage.textContent = message;
+    // Alle vorherigen Statusklassen und den versteckten Zustand entfernen
+    formStatusMessage.classList.remove('hidden', 'form-status-success', 'form-status-error', 'form-status-info');
+
+    // Die entsprechende Klasse basierend auf dem Nachrichtentyp hinzufügen
+    if (type === 'success') {
+        formStatusMessage.classList.add('form-status-success');
+    } else if (type === 'error') {
+        formStatusMessage.classList.add('form-status-error');
+    } else if (type === 'info') {
+        formStatusMessage.classList.add('form-status-info');
     }
+    formStatusMessage.classList.remove('hidden'); // Sicherstellen, dass die Nachricht sichtbar ist
+
+    // Erfolgs-/Fehlermeldungen nach ein paar Sekunden automatisch ausblenden
+    if (type === 'success' || type === 'error') {
+        setTimeout(() => {
+            formStatusMessage.classList.add('hidden');
+        }, 5000); // Nachricht verschwindet nach 5 Sekunden
+    }
+}
+
+/**
+ * Validiert das Format einer E-Mail-Adresse.
+ * @param {string} email - Der zu validierende E-Mail-String.
+ * @returns {boolean} True, wenn die E-Mail gültig ist, sonst False.
+ */
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
 });
