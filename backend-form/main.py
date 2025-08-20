@@ -13,12 +13,11 @@ load_dotenv()
 app = FastAPI()
 
 # Configure CORS to allow your frontend to communicate with the backend
-# We explicitly add "null" for local file development (e.g. opening index.html directly)
 origins = [
     "http://127.0.0.1:5500",  # For local development (e.g., Live Server extension)
     "http://localhost:5500", # Alternative for local development
     "null",                  # CRUCIAL FOR LOCAL FILE-BASED ORIGINS!
-    "https://website-holy-haze-9007.fly.dev" # Your deployed Fly.io application URL
+    "https://mein-portfolio.vercel.app" # Your deployed Vercel application URL
 ]
 
 app.add_middleware(
