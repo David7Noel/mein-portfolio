@@ -1,0 +1,19 @@
+# flyctl launch added from .gitignore
+**\    # Python Virtual Environment (Nicht für dieses Frontend-Projekt benötigt)
+**\    venv
+
+**\    # Ignoriere temporäre\alte HTML-Dateien
+**\    test.html
+
+**\    # Ignoriere alle .txt-Dateien (auch requirements.txt, da nicht relevant für Frontend)
+**\    *.txt
+
+**\    # Ignoriere spezifische, nicht benötigte Dateien
+**\    AddType videomp4 .htaccess.txt
+
+**\    # Ignore node_modules directory
+**\    node_modules
+
+# flyctl launch added from node_modules\tailwindcss\stubs\.gitignore
+!node_modules\tailwindcss\stubs\**\*
+fly.toml

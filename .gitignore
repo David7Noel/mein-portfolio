@@ -1,6 +1,9 @@
     # Python Virtual Environment (Nicht für dieses Frontend-Projekt benötigt)
     venv/
 
+    # Virtual environment
+    backend-form/venv/
+
     # Ignoriere temporäre/alte HTML-Dateien
     test.html
 
