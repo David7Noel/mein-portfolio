@@ -1,275 +1,275 @@
-        document.addEventListener('DOMContentLoaded', () => {
-            const loadingOverlay = document.getElementById('loading-overlay');
-            const modeToggle = document.getElementById('mode-toggle');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section[id]');
-            const scrollPrompt = document.getElementById('scroll-prompt');
-            const homeSection = document.getElementById('home');
-            const emailAddressLink = document.getElementById('email-address-link');
-            const copyEmailAction = document.getElementById('copy-email-action');
-            const copyMessage = document.getElementById('copy-message');
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const modeToggle = document.getElementById('mode-toggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPrompt = document.getElementById('scroll-prompt');
+    const homeSection = document.getElementById('home');
+    const emailAddressLink = document.getElementById('email-address-link');
+    const copyEmailAction = document.getElementById('copy-email-action');
+    const copyMessage = document.getElementById('copy-message');
 
-            // --- Theme Handling ---
-            // Hide loading overlay after 1.5 seconds
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-                // Ensure body content is visible after loading overlay hides
-                document.body.style.visibility = 'visible';
-            }, 1500);
+    // --- Theme Handling ---
+    // Hide loading overlay after 1.5 seconds
+    setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+        // Ensure body content is visible after loading overlay hides
+        document.body.style.visibility = 'visible';
+    }, 1500);
 
-            // Set initial theme based on local storage or system preference
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Set initial theme based on local storage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.body.classList.add('dark');
-                modeToggle.innerHTML = '☀️ Light Mode';
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark');
+        modeToggle.innerHTML = '☀️ Light Mode';
+    } else {
+        document.body.classList.remove('dark');
+        modeToggle.innerHTML = '🌙 Dark Mode';
+    }
+
+    // Theme toggle functionality
+    modeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        if (document.body.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+            modeToggle.innerHTML = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('theme', 'light');
+            modeToggle.innerHTML = '🌙 Dark Mode';
+        }
+        // Update gradients on theme change
+        updateSectionGradients();
+    });
+
+    // Function to update section gradients based on theme
+    function updateSectionGradients() {
+        const homeSectionDiv = document.querySelector('#home > div:first-child');
+        const contactSectionDiv = document.querySelector('#contact > div:first-child');
+
+        if (document.body.classList.contains('dark')) {
+            homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-from)] to-[var(--gradient-dark-to)]';
+            contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-to)] to-[var(--gradient-dark-from)]'; /* Reversed for contact */
+        } else {
+            // Light mode: Use light home gradients for home/contact
+            homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-from)] to-[var(--light-home-gradient-to)]';
+            contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-to)] to-[var(--light-home-gradient-from)]'; /* Reversed for contact */
+        }
+    }
+    // Call on initial load
+    updateSectionGradients();
+
+
+    // --- Custom Scroll Animation Logic (Reverted to non-interruptible) ---
+
+    // Easing function for a "a tiny bit slower" acceleration and "even harder" deceleration (Quantic ease-out)
+    function easeOutQuint(t) {
+        return 1 - Math.pow(1 - t, 5);
+    }
+
+    // Custom scroll function that scrolls the entire window (non-interruptible)
+    function scrollToTarget(targetElement, duration) {
+        const startPosition = window.scrollY; // Current scroll position of the window
+        // Calculate target position, accounting for sticky header's height (100px due to smaller header)
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1); // Clamp progress between 0 and 1
+            const easedProgress = easeOutQuint(progress); // Apply easing function
+
+            window.scrollTo(0, startPosition + distance * easedProgress);
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+        requestAnimationFrame(animation); // Start the animation
+    }
+
+    const homeP = document.querySelector('#home p');
+    if (homeP) {
+           homeP.style.animation = 'fadeInUp 1.2s ease-out 0.3s forwards';
+    }
+
+
+    // --- Intersection Observer for scroll-in animations (only for section visibility) ---
+    const scrollObserverOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the item is visible
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
             } else {
-                document.body.classList.remove('dark');
-                modeToggle.innerHTML = '🌙 Dark Mode';
+                // Optionally, remove 'is-visible' if elements should re-animate on scroll out and back in
+                // entry.target.classList.remove('is-visible');
             }
+        });
+    }, scrollObserverOptions);
 
-            // Theme toggle functionality
-            modeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark');
-                if (document.body.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    modeToggle.innerHTML = '☀️ Light Mode';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    modeToggle.innerHTML = '🌙 Dark Mode';
-                }
-                // Update gradients on theme change
-                updateSectionGradients();
-            });
+    // Apply observer to all elements with 'scroll-in-animation' class
+    sections.forEach(element => { // 'sections' is already defined and contains all section elements
+        scrollObserver.observe(element);
+    });
 
-            // Function to update section gradients based on theme
-            function updateSectionGradients() {
-                const homeSectionDiv = document.querySelector('#home > div:first-child');
-                const contactSectionDiv = document.querySelector('#contact > div:first-child');
-
-                if (document.body.classList.contains('dark')) {
-                    homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-from)] to-[var(--gradient-dark-to)]';
-                    contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--gradient-dark-to)] to-[var(--gradient-dark-from)]'; /* Reversed for contact */
-                } else {
-                    // Light mode: Use light home gradients for home/contact
-                    homeSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-from)] to-[var(--light-home-gradient-to)]';
-                    contactSectionDiv.className = 'absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--light-home-gradient-to)] to-[var(--light-home-gradient-from)]'; /* Reversed for contact */
-                }
-            }
-            // Call on initial load
-            updateSectionGradients();
+    // Initial check for elements already in view on load
+    scrollObserver.takeRecords().forEach(entry => { // Process existing intersections
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+        }
+    });
 
 
-            // --- Custom Scroll Animation Logic (Reverted to non-interruptible) ---
-
-            // Easing function for a "a tiny bit slower" acceleration and "even harder" deceleration (Quantic ease-out)
-            function easeOutQuint(t) {
-                return 1 - Math.pow(1 - t, 5);
-            }
-
-            // Custom scroll function that scrolls the entire window (non-interruptible)
-            function scrollToTarget(targetElement, duration) {
-                const startPosition = window.scrollY; // Current scroll position of the window
-                // Calculate target position, accounting for sticky header's height (100px due to smaller header)
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
-                const distance = targetPosition - startPosition;
-                let startTime = null;
-
-                function animation(currentTime) {
-                    if (startTime === null) startTime = currentTime;
-                    const timeElapsed = currentTime - startTime;
-                    const progress = Math.min(timeElapsed / duration, 1); // Clamp progress between 0 and 1
-                    const easedProgress = easeOutQuint(progress); // Apply easing function
-
-                    window.scrollTo(0, startPosition + distance * easedProgress);
-
-                    if (timeElapsed < duration) {
-                        requestAnimationFrame(animation);
-                    }
-                }
-                requestAnimationFrame(animation); // Start the animation
-            }
-
-            const homeP = document.querySelector('#home p');
-            if (homeP) {
-                 homeP.style.animation = 'fadeInUp 1.2s ease-out 0.3s forwards';
-            }
-
-
-            // --- Intersection Observer for scroll-in animations (only for section visibility) ---
-            const scrollObserverOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the item is visible
-            };
-
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
+    // --- Intersection Observer for Active Navigation Link ---
+    // This observer watches sections and updates the active nav link when a section is in view
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = `#${entry.target.id}`;
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === sectionId) {
+                        link.classList.add('active');
                     } else {
-                        // Optionally, remove 'is-visible' if elements should re-animate on scroll out and back in
-                        // entry.target.classList.remove('is-visible');
+                        link.classList.remove('active');
                     }
                 });
-            }, scrollObserverOptions);
+            }
+        });
+    }, {
+        root: null, // viewport
+        rootMargin: '-50% 0px -49% 0px', // Trigger when section crosses the middle of the viewport
+        threshold: 0 // Will trigger as soon as it crosses
+    });
 
-            // Apply observer to all elements with 'scroll-in-animation' class
-            sections.forEach(element => { // 'sections' is already defined and contains all section elements
-                scrollObserver.observe(element);
-            });
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
 
-            // Initial check for elements already in view on load
-            scrollObserver.takeRecords().forEach(entry => { // Process existing intersections
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+    // --- Navigation Link Click Handler (manual activation and custom smooth scroll) ---
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor jump
+
+            // Remove 'active' from all nav links
+            navLinks.forEach(nav => nav.classList.remove('active'));
+
+            // Add 'active' to the clicked link
+            this.classList.add('active');
+
+            // Use custom scroll function
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                scrollToTarget(targetSection, 4000); // Retained 4000ms duration for smoother feel
+            }
+        });
+    });
+
+    // Set initial active link if page loads at a specific section or default to home
+    const initialHash = window.location.hash;
+    if (initialHash) {
+        const initialNavLink = document.querySelector(`.nav-link[href="${initialHash}"]`);
+        if (initialNavLink) {
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            initialNavLink.classList.add('active');
+            const targetSection = document.querySelector(initialHash);
+            if (targetSection) {
+                scrollToTarget(targetSection, 100); // Shorter duration for initial load
+            }
+        }
+    } else {
+        // Default to home being active on load if no hash
+        const homeNavLink = document.querySelector('.nav-link[href="#home"]');
+        if (homeNavLink) {
+            homeNavLink.classList.add('active');
+        }
+    }
+
+    // --- Scroll Prompt Functionality (always visible) ---
+    if (scrollPrompt) {
+        scrollPrompt.addEventListener('click', (e) => {
+            e.preventDefault();
+            const activeNavLink = document.querySelector('.nav-link.active');
+            if (activeNavLink) {
+                const currentSectionId = activeNavLink.getAttribute('href');
+                let currentIndex = Array.from(navLinks).findIndex(link => link.getAttribute('href') === currentSectionId);
+
+                if (currentIndex < navLinks.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Loop back to home
                 }
-            });
 
+                const nextTargetId = navLinks[currentIndex].getAttribute('href');
+                const nextTargetSection = document.querySelector(nextTargetId);
 
-            // --- Intersection Observer for Active Navigation Link ---
-            // This observer watches sections and updates the active nav link when a section is in view
-            const navObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const sectionId = `#${entry.target.id}`;
-                        navLinks.forEach(link => {
-                            if (link.getAttribute('href') === sectionId) {
-                                link.classList.add('active');
-                            } else {
-                                link.classList.remove('active');
-                            }
-                        });
-                    }
-                });
-            }, {
-                root: null, // viewport
-                rootMargin: '-50% 0px -49% 0px', // Trigger when section crosses the middle of the viewport
-                threshold: 0 // Will trigger as soon as it crosses
-            });
-
-            sections.forEach(section => {
-                navObserver.observe(section);
-            });
-
-            // --- Navigation Link Click Handler (manual activation and custom smooth scroll) ---
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default anchor jump
-
-                    // Remove 'active' from all nav links
+                if (nextTargetSection) {
                     navLinks.forEach(nav => nav.classList.remove('active'));
-
-                    // Add 'active' to the clicked link
-                    this.classList.add('active');
-
-                    // Use custom scroll function
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        scrollToTarget(targetSection, 4000); // Retained 4000ms duration for smoother feel
-                    }
-                });
-            });
-
-            // Set initial active link if page loads at a specific section or default to home
-            const initialHash = window.location.hash;
-            if (initialHash) {
-                const initialNavLink = document.querySelector(`.nav-link[href="${initialHash}"]`);
-                if (initialNavLink) {
-                    navLinks.forEach(nav => nav.classList.remove('active'));
-                    initialNavLink.classList.add('active');
-                    const targetSection = document.querySelector(initialHash);
-                    if (targetSection) {
-                        scrollToTarget(targetSection, 100); // Shorter duration for initial load
-                    }
-                }
-            } else {
-                // Default to home being active on load if no hash
-                const homeNavLink = document.querySelector('.nav-link[href="#home"]');
-                if (homeNavLink) {
-                    homeNavLink.classList.add('active');
+                    navLinks[currentIndex].classList.add('active');
+                    scrollToTarget(nextTargetSection, 4000); // 4000ms duration for smoother feel
                 }
             }
+        });
+    }
 
-            // --- Scroll Prompt Functionality (always visible) ---
-            if (scrollPrompt) {
-                scrollPrompt.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const activeNavLink = document.querySelector('.nav-link.active');
-                    if (activeNavLink) {
-                        const currentSectionId = activeNavLink.getAttribute('href');
-                        let currentIndex = Array.from(navLinks).findIndex(link => link.getAttribute('href') === currentSectionId);
+    // --- "DNK" Logo click to scroll to top ---
+    document.getElementById('title').addEventListener('click', () => {
+        scrollToTarget(document.getElementById('home'), 1500); // Use custom scroll to home
+    });
 
-                        if (currentIndex < navLinks.length - 1) {
-                            currentIndex++;
-                        } else {
-                            currentIndex = 0; // Loop back to home
-                        }
+    // --- Email Copy to Clipboard Functionality ---
+    // The emailAddressLink's default mailto: behavior is now preserved.
+    // The copyEmailAction span is solely responsible for copying.
+    if (emailAddressLink) {
+        // Remove the preventDefault from the mailto link's direct event listener.
+        // This allows the mailto: protocol to be handled by the browser directly.
+        // The current setup has no direct listener on emailAddressLink, which is good.
+        // If there were one, it would look like:
+        // emailAddressLink.addEventListener('click', function(e) {
+        //    // e.preventDefault(); // THIS LINE WOULD BE REMOVED
+        // });
+    }
 
-                        const nextTargetId = navLinks[currentIndex].getAttribute('href');
-                        const nextTargetSection = document.querySelector(nextTargetId);
 
-                        if (nextTargetSection) {
-                            navLinks.forEach(nav => nav.classList.remove('active'));
-                            navLinks[currentIndex].classList.add('active');
-                            scrollToTarget(nextTargetSection, 4000); // 4000ms duration for smoother feel
-                        }
-                    }
-                });
+    if (copyEmailAction) {
+        copyEmailAction.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default action for the span itself
+            const email = "davidnoel.kruska@outlook.de";
+            const tempInput = document.createElement('textarea');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                copyMessage.textContent = 'Copied!';
+                copyMessage.classList.add('opacity-100');
+                setTimeout(() => {
+                    copyMessage.classList.remove('opacity-100');
+                    copyMessage.textContent = ''; // Clear text after fading out
+                }, 1500);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                copyMessage.textContent = 'Failed to copy!';
+                copyMessage.classList.add('opacity-100');
+                setTimeout(() => {
+                    copyMessage.classList.remove('opacity-100');
+                    copyMessage.textContent = '';
+                }, 1500);
+            } finally {
+                document.body.removeChild(tempInput);
             }
+        });
+    }
 
-            // --- "DNK" Logo click to scroll to top ---
-            document.getElementById('title').addEventListener('click', () => {
-                scrollToTarget(document.getElementById('home'), 1500); // Use custom scroll to home
-            });
-
-            // --- Email Copy to Clipboard Functionality ---
-            // The emailAddressLink's default mailto: behavior is now preserved.
-            // The copyEmailAction span is solely responsible for copying.
-            if (emailAddressLink) {
-                // Remove the preventDefault from the mailto link's direct event listener.
-                // This allows the mailto: protocol to be handled by the browser directly.
-                // The current setup has no direct listener on emailAddressLink, which is good.
-                // If there were one, it would look like:
-                // emailAddressLink.addEventListener('click', function(e) {
-                //    // e.preventDefault(); // THIS LINE WOULD BE REMOVED
-                // });
-            }
-
-
-            if (copyEmailAction) {
-                copyEmailAction.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default action for the span itself
-                    const email = "davidnoel.kruska@outlook.de";
-                    const tempInput = document.createElement('textarea');
-                    tempInput.value = email;
-                    document.body.appendChild(tempInput);
-                    tempInput.select();
-                    try {
-                        document.execCommand('copy');
-                        copyMessage.textContent = 'Copied!';
-                        copyMessage.classList.add('opacity-100');
-                        setTimeout(() => {
-                            copyMessage.classList.remove('opacity-100');
-                            copyMessage.textContent = ''; // Clear text after fading out
-                        }, 1500);
-                    } catch (err) {
-                        console.error('Failed to copy text: ', err);
-                        copyMessage.textContent = 'Failed to copy!';
-                        copyMessage.classList.add('opacity-100');
-                        setTimeout(() => {
-                            copyMessage.classList.remove('opacity-100');
-                            copyMessage.textContent = '';
-                        }, 1500);
-                    } finally {
-                        document.body.removeChild(tempInput);
-                    }
-                });
-            }
-
-            // --- KONTAKTFORMULAR JAVASCRIPT LOGIK ---
+    // --- KONTAKTFORMULAR JAVASCRIPT LOGIK ---
 // WICHTIG: Die IDs der Formularfelder wurden von 'name', 'email', 'subject', 'message'
 //          zu 'form-name', 'form-email', 'form-subject', 'form-message' geändert,
 //          um Konflikte mit anderen IDs auf der Seite zu vermeiden.
@@ -308,6 +308,7 @@ if (contactForm && formStatusMessage) {
         };
 
         try {
+            // HIER IST DIE KORRIGIERTE URL FÜR DEIN BACKEND
             const response = await fetch('https://website-holy-haze-9007.fly.dev/api/send_email', {
                 method: 'POST',
                 headers: {
