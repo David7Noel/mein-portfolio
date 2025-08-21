@@ -1,17 +1,16 @@
-    # Python Virtual Environment (Nicht für dieses Frontend-Projekt benötigt)
-    venv/
+# dependencies
+/node_modules
 
-    # Virtual environment
-    backend-form/venv/
+# Vercel specific files
+.vercel/
 
-    # Ignoriere temporäre/alte HTML-Dateien
-    test.html
+# dotenv files
+.env.local
 
-    # Ignoriere alle .txt-Dateien (auch requirements.txt, da nicht relevant für Frontend)
-    *.txt
+# Build artifacts
+/dist
 
-    # Ignoriere spezifische, nicht benötigte Dateien
-    AddType videomp4 .htaccess.txt
-    
-    # Ignore node_modules directory
-    node_modules/
+# Editor and OS files
+.DS_Store
+.idea
+.vscode
