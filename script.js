@@ -309,7 +309,7 @@ if (contactForm && formStatusMessage) {
 
         try {
             // HIER IST DIE KORRIGIERTE URL FÜR DEIN BACKEND
-            const response = await fetch('https://website-holy-haze-9007.fly.dev/api/send_email', {
+            const response = await fetch('https://website-holy-haze-9007-production.up.railway.app/api/send_email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
