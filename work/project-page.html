@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+
+        <!-- Project Header and Navigation -->
+        <div class="mb-8">
+            <nav class="flex justify-between items-center mb-6">
+                <!-- Back to "work" section -->
+                <a href="../index.html#work" class="text-sm text-gray-600 dark:text-gray-400 hover:underline">&lt;-- Back to Work</a>
+                <div class="flex space-x-4">
+                    <!-- Navigation Links -->
+                    <a href="../index.html" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">Home</a>
+                    <a href="../index.html#about" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">About</a>
+                    <a href="../index.html#contact" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">Contact</a>
+                </div>
+            </nav>
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl font-bold mb-2">RAG Chatbot</h1>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Full-Stack Development, AI, NLP</p>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 mb-8">
+            <!-- YouTube Thumbnail with Link -->
+            <a href="https://www.youtube.com/watch?v=2egz-IzPhmo" target="_blank" rel="noopener noreferrer" class="block w-2/3 mx-auto mb-8 transition-transform transform hover:scale-105 duration-200">
+                <img src="../assets/Bilder/Screenshot_demo_ragchatbot.png" alt="RAG Chatbot Project Thumbnail" class="w-full h-auto rounded-lg shadow-md">
+            </a>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                <!-- Column 1: Role and Responsibilities -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">Role</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Full-Stack Developer, AI Integrator</p>
+                    <h3 class="font-semibold text-lg mt-4 mb-2">Responsibilities</h3>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                        <li>Frontend development with React</li>
+                        <li>Backend development with FastAPI</li>
+                        <li>Implementation of RAG logic with LLMs</li>
+                        <li>Database integration with PostgreSQL and pgvector</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Technologies -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">Technologies</h3>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                        <li>React & FastAPI</li>
+                        <li>PostgreSQL & pgvector</li>
+                        <li>LLM & RAG (Retrieval Augmented Generation)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Live Website Button -->
+            <!-- Placeholder link to GitHub as this is a local prototype -->
+            <a href="https://github.com/David7Noel/ragchatbot-for-portfolio" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-lg" rel="noopener noreferrer">
+                View on GitHub
+            </a>
+        </div>
+
+        <!-- Detailed Project Description -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 mb-8">
+            <!-- Section "Overview" -->
+            <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+                This project was created to demonstrate an understanding of full-stack development and the practical application of advanced AI concepts. The RAG chatbot is an interactive prototype that provides context-aware answers to user queries by retrieving information from a document database. It's a testament to the idea that a blend of logical backend systems and intuitive frontend design can create powerful and intelligent tools.
+            </p>
+
+            <!-- Section "Development & Challenges" -->
+            <h2 class="text-2xl font-bold mb-4">Development & Challenges</h2>
+            <p class="text-600 dark:text-gray-400 mb-6">
+                One of the biggest challenges was accurately implementing the Retrieval Augmented Generation (RAG) logic. This required a deep understanding of embeddings, semantic chunking, and how to effectively query a vector database like pgvector to retrieve the most relevant document snippets. Overcoming this involved careful data preprocessing and fine-tuning the query process to ensure accurate and precise answers from the chatbot.
+            </p>
+
+            <!-- Section "Impact & Conclusion" -->
+            <h2 class="text-2xl font-bold mb-4">Impact & Conclusion</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+                The RAG Chatbot serves as a powerful example of how I can integrate complex technologies like LLMs and vector databases into a seamless full-stack application. The skills learned from this project, from managing backend APIs to designing a responsive user interface, are directly applicable to building sophisticated digital products. It showcases a passion for continuous learning and problem-solving in the AI and development space.
+            </p>
+
+            <!-- Optional blog post link -->
+            <a href="https://github.com/David7Noel/ragchatbot-for-portfolio" target="_blank" class="text-blue-600 hover:underline font-semibold" rel="noopener noreferrer">Click here to view the project on GitHub.</a>
+        </div>
+
+        <!-- Next Project -->
+        <div class="text-center mt-12">
+            <span class="text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">Up next</span>
+            <h3 class="text-2xl font-bold mt-2">
+                <a href="#" class="text-blue-600 hover:underline">Name of the next project</a>
+            </h3>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-12 pt-6 border-t border-gray-300 dark:border-gray-700">
+            <p>Designed and developed with &#x2764;&#xfe0f; by David Noél Kruska &copy; 2025. All rights reserved.</p>
+            <p class="mt-2">Contact: davidnoel.kruska@outlook.de</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
